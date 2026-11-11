@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Vexel Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f7;--bg2:#e8e8ed;--tx:#1d1d1f;--mu:#6e6e73;--cd:rgba(255,255,255,.72);--ln:rgba(0,0,0,.09);--g:"Space Grotesk",-apple-system,"Helvetica Neue",sans-serif;--s:"Playfair Display",Georgia,serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1c1c1e;--bg2:#2c2c2e;--tx:#f5f5f7;--mu:#a1a1a6;--cd:rgba(44,44,46,.72);--ln:rgba(255,255,255,.1)}}
+:root[data-theme=dark]{--bg:#1c1c1e;--bg2:#2c2c2e;--tx:#f5f5f7;--mu:#a1a1a6;--cd:rgba(44,44,46,.72);--ln:rgba(255,255,255,.1)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--tx);font:16px/1.5 -apple-system,"Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--cd);backdrop-filter:blur(20px)}
+h1,h2,h3,.g{font-family:var(--g);font-weight:700;letter-spacing:-.03em}em{font-family:var(--s);font-style:italic;font-weight:500;letter-spacing:-.01em}
+nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:6px;align-items:center;padding:8px 14px 8px 20px;border-radius:99px;background:var(--cd);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--ln);width:max-content;max-width:calc(100% - 24px)}
+nav b{font-family:var(--g);margin-right:10px}nav a{color:var(--mu);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:99px}nav a:hover{color:var(--tx)}
+.btn{font:500 14px var(--g);border:0;border-radius:99px;padding:10px 20px;background:var(--tx);color:var(--bg);cursor:pointer;text-decoration:none;display:inline-block}.btn.o{background:var(--bg2);color:var(--tx)}
+section{max-width:1200px;margin:auto;padding:90px 20px}
+.hero{padding-top:170px;text-align:center}.hero h1{font-size:clamp(44px,9vw,112px);line-height:.98}.hero p{max-width:520px;margin:24px auto 32px;color:var(--mu);font-size:19px}.hero .btn{margin:4px}
+h2{font-size:clamp(30px,5vw,52px);margin-bottom:24px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px}.tabs button{white-space:nowrap}
+.grid{columns:3 280px;column-gap:18px}
+.c{position:relative;break-inside:avoid;margin-bottom:18px;border-radius:26px;overflow:hidden;background:var(--bg2);border:1px solid var(--ln);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.c:hover{transform:scale(1.015);box-shadow:0 24px 60px rgba(0,0,0,.18)}
+.m{position:relative;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden}
+.m img,.m video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.ph{position:absolute;inset:0;display:grid;place-items:center;font:700 56px var(--g);color:rgba(255,255,255,.55)}
+.cap{position:absolute;left:10px;right:10px;bottom:10px;padding:10px 16px;border-radius:18px;background:var(--cd);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;justify-content:space-between;gap:10px;font-size:14px}.cap span{color:var(--mu)}
+.bf{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--p,50%)) 0 0)}.ln{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;background:#fff;box-shadow:0 0 8px #0006}
+.ln::after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-size:14px}
+.rg{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:2}
+.tg{position:absolute;top:12px;font-size:11px;padding:3px 9px;border-radius:99px;background:#0007;color:#fff;z-index:1}
+.sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.sv div{padding:30px;border-radius:26px;background:var(--cd);backdrop-filter:blur(20px);border:1px solid var(--ln)}.sv h3{font-size:22px;margin-bottom:8px}.sv p,footer{color:var(--mu)}
+.ct{text-align:center}.ct h2{font-size:clamp(36px,7vw,80px)}footer{text-align:center;padding:30px 20px 50px;font-size:13px}footer a{cursor:pointer;text-decoration:underline}
+#adm .sh{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);display:flex;justify-content:flex-end}
+#adm .sb{width:min(460px,100%);height:100%;overflow:auto;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 40px}
+.sb h3{margin:22px 0 10px}.sb input,.sb select{width:100%;padding:10px 12px;margin:4px 0;border-radius:12px;border:1px solid var(--ln);background:var(--cd);color:var(--tx);font:15px var(--g)}
+.r{display:flex;gap:6px;align-items:center;padding:8px;border-radius:14px;background:var(--cd);margin:6px 0;border:1px solid var(--ln)}.r input{margin:0;flex:1;min-width:0}.r button{padding:6px 10px}
+.sb small{color:var(--mu)}.hd{display:flex;justify-content:space-between;align-items:center}
+</style></head><body>
+<div id="app"></div><div id="adm"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ===== CONFIG ===== */
+const SB_URL="https://lrcauxpiqbhtecseczlt.supabase.co",SB_KEY="sb_publishable_LGUNrRHAKUnJcYaEN8YxkA_RFaIwFhs",ADMIN_EMAIL="sifatarafat60@gmail.com"; // <- nijer email dao (setup.sql-er email-er sathe same)
+/* ================== */
+const sb=supabase.createClient(SB_URL,SB_KEY),$=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
+let S={h:"Edits that",h2:"hold attention.",sub:"Vexel Studio crafts scroll-stopping thumbnails and cinematic video edits for creators and brands.",email:"hello@vexel.studio",wa:""},I=[],F='all',user=null,adm=0,msg='';
+const L={all:'All',v:'Videos',th:'Thumbnails',ba:'Before / After'},touch=matchMedia('(hover:none)').matches,isA=()=>user&&user.email&&user.email.toLowerCase()==ADMIN_EMAIL.toLowerCase();
+const gr=n=>`linear-gradient(135deg,hsl(0 0% ${62-n*5}%),hsl(0 0% ${82-n*4}%))`;
+function card(i,n){let m;
+ if(i.t=='v')m=`<div class="m" style="background:${gr(n)}">${i.a?`<video muted loop playsinline preload="metadata" src="${E(i.a)}#t=0.1"></video>`:`<div class="ph">▶</div>`}</div>`;
+ else if(i.t=='th')m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="${E(i.title)}">`:`<div class="ph">Aa</div>`}</div>`;
+ else m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="After">`:''}<div class="bf" style="background:${gr(n+3)}">${i.b?`<img loading="lazy" src="${E(i.b)}" alt="Before">`:''}</div><span class="tg" style="left:12px">Before</span><span class="tg" style="right:12px">After</span><div class="ln"></div><input class="rg" type="range" min="0" max="100" value="50" aria-label="Before after slider"></div>`;
+ return `<article class="c">${m}<div class="cap"><b class="g">${E(i.title)}</b><span>${E(i.tag)}</span></div></article>`}
+function render(){const it=I.filter(x=>F=='all'||x.t==F);
+$('#app').innerHTML=`<nav><b>Vexel</b><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></nav>
+<section class="hero"><h1>${E(S.h)}<br><em>${E(S.h2)}</em></h1><p>${E(S.sub)}</p><a class="btn" href="#work">View work</a> <a class="btn o" href="#contact">Get in touch</a></section>
+<section id="work"><h2>Selected <em>work</em></h2><div class="tabs">${Object.entries(L).map(([k,v])=>`<button class="btn ${F==k?'':'o'}" data-f="${k}">${v}</button>`).join('')}</div><div class="grid">${it.map((x,n)=>card(x,n)).join('')||'<p>Nothing here yet.</p>'}</div></section>
+<section id="services"><h2>What we <em>do</em></h2><div class="sv"><div><h3>Video Editing</h3><p>Reels, vlogs, ads and long-form with retention-first pacing, sound and colour.</p></div><div><h3>Thumbnails</h3><p>Click-worthy designs built to lift your CTR.</p></div><div><h3>Retouch & Grade</h3><p>Colour correction, cleanup and finishing that elevates raw footage.</p></div></div></section>
+<section id="contact" class="ct"><h2>Let’s make something <em>great.</em></h2><a class="btn" href="mailto:${E(S.email)}">${E(S.email)}</a>${S.wa?` <a class="btn o" href="https://wa.me/${E(S.wa)}">WhatsApp</a>`:''}</section><footer>© Vexel Studio · <a id="ao">Admin</a></footer>`;
+document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{F=b.dataset.f;render()});
+$('#ao').onclick=()=>{adm=1;ar()};
+document.querySelectorAll('.c').forEach(c=>{const v=c.querySelector('video'),r=c.querySelector('.rg');
+ if(v){const p=()=>v.play().catch(()=>{}),q=()=>{v.pause();v.currentTime=.1};c.onmouseenter=p;c.onmouseleave=q;if(touch)new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting?p():q()),{threshold:.6}).observe(c)}
+ if(r)r.oninput=()=>c.querySelector('.m').style.setProperty('--p',r.value+'%')})}
+async function load(){try{const a=await sb.from('items').select('*').order('pos'),b=await sb.from('settings').select('data').eq('id',1).maybeSingle();if(a.data)I=a.data;if(b.data&&b.data.data)S={...S,...b.data.data}}catch(e){}render();if(adm)ar()}
+function ar(){const a=$('#adm');if(!adm){a.innerHTML='';return}let h;
+if(!user)h=`<h3>Admin sign in</h3><input id="le" type="email" placeholder="Email" autocomplete="email"><input id="lp" type="password" placeholder="Password (min 6)" autocomplete="current-password"><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="si">Sign in</button><button class="btn o" id="su">Create account</button></div><p><small>${E(msg)}</small></p><p><small>Account create korle email confirm korte hobe. Shudhu admin email-er account edit korte parbe.</small></p>`;
+else if(!isA())h=`<h3>Not authorised</h3><p><small>${E(user.email)} admin account na.</small></p><button class="btn o" id="so">Sign out</button>`;
+else h=`<small>Signed in: ${E(user.email)}</small> <button class="btn o" id="so" style="padding:4px 12px">Sign out</button>
+<h3>Site text</h3>${[['h','Headline'],['h2','Italic headline'],['sub','Subtext'],['email','Email'],['wa','WhatsApp number (no +)']].map(([k,l])=>`<small>${l}</small><input data-s="${k}" value="${E(S[k])}">`).join('')}
+<h3>Add item</h3><select id="nt"><option value="v">Video</option><option value="th">Thumbnail</option><option value="ba">Before / After</option></select><input id="nti" placeholder="Title"><input id="ntg" placeholder="Tag (e.g. YouTube)">
+<small>Main file (video / thumbnail / AFTER image)</small><input id="nf" type="file" accept="video/*,image/*"><input id="nu" placeholder="…or paste a URL"><small>BEFORE image (only Before / After)</small><input id="nb" type="file" accept="image/*">
+<button class="btn" id="add" style="margin-top:8px">Add</button> <small id="st">${E(msg)}</small>
+<h3>Items (${I.length})</h3>${I.map((x,n)=>`<div class="r"><input data-n="${n}" value="${E(x.title)}"><button class="btn o" data-m="${n}:-1">↑</button><button class="btn o" data-m="${n}:1">↓</button><button class="btn o" data-d="${n}">✕</button></div>`).join('')}<p><small>Sob change sathe sathe live hoy.</small></p>`;
+a.innerHTML=`<div class="sh"><div class="sb"><div class="hd"><h3 class="g" style="margin:0">Admin panel</h3><button class="btn o" id="x">Close</button></div>${h}</div></div>`;
+$('#x').onclick=()=>{adm=0;ar()};const g=id=>$(id);
+if(g('#si'))g('#si').onclick=async()=>{const r=await sb.auth.signInWithPassword({email:$('#le').value,password:$('#lp').value});msg=r.error?r.error.message:'';ar()};
+if(g('#su'))g('#su').onclick=async()=>{const r=await sb.auth.signUp({email:$('#le').value,password:$('#lp').value});msg=r.error?r.error.message:'Check your email to confirm, then sign in.';ar()};
+if(g('#so'))g('#so').onclick=()=>sb.auth.signOut();
+if(!isA())return;
+const ck=(r,ok)=>{if(r&&r.error){msg='Error: '+r.error.message;ar()}else ok()};
+a.querySelectorAll('[data-s]').forEach(i=>i.onchange=async()=>{S[i.dataset.s]=i.value;const r=await sb.from('settings').upsert({id:1,data:S});ck(r,render)});
+a.querySelectorAll('[data-n]').forEach(i=>i.onchange=async()=>{const x=I[i.dataset.n];x.title=i.value;ck(await sb.from('items').update({title:x.title}).eq('id',x.id),render)});
+a.querySelectorAll('[data-d]').forEach(b=>b.onclick=async()=>{if(!confirm('Delete?'))return;ck(await sb.from('items').delete().eq('id',I[b.dataset.d].id),load)});
+a.querySelectorAll('[data-m]').forEach(b=>b.onclick=async()=>{const[n,d]=b.dataset.m.split(':').map(Number),j=n+d;if(j<0||j>=I.length)return;const x=I[n],y=I[j];
+ await sb.from('items').update({pos:y.pos}).eq('id',x.id);await sb.from('items').update({pos:x.pos}).eq('id',y.id);load()});
+g('#add').onclick=async()=>{const st=$('#st');try{st.textContent='Uploading…';
+ const up=async f=>{if(!f)return'';const p=Date.now()+'-'+Math.random().toString(36).slice(2,7)+'-'+f.name.replace(/[^\w.]/g,'_'),r=await sb.storage.from('media').upload(p,f);if(r.error)throw r.error;return sb.storage.from('media').getPublicUrl(p).data.publicUrl};
+ const row={t:$('#nt').value,title:$('#nti').value||'Untitled',tag:$('#ntg').value,a:(await up($('#nf').files[0]))||$('#nu').value.trim(),b:await up($('#nb').files[0]),pos:-Date.now()};
+ const r=await sb.from('items').insert(row);if(r.error)throw r.error;msg='Added ✓';load()}catch(e){msg='Error: '+(e.message||'failed');ar()}}}
+sb.auth.onAuthStateChange((_,s)=>{user=s?s.user:null;if(adm)ar()});
+sb.auth.getSession().then(r=>{user=r.data.session?r.data.session.user:null});
+render();load();
+</script></body></html>
