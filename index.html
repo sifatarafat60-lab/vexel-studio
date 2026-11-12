@@ -11,9 +11,9 @@ h1,h2,h3,.g{font-family:var(--g);font-weight:700;letter-spacing:-.03em}em{font-f
 nav{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:6px;align-items:center;padding:8px 14px 8px 20px;border-radius:99px;background:var(--cd);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border:1px solid var(--ln);width:max-content;max-width:calc(100% - 24px)}
 nav b{font-family:var(--g);margin-right:10px}nav a{color:var(--mu);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:99px}nav a:hover{color:var(--tx)}
 .btn{font:500 14px var(--g);border:0;border-radius:99px;padding:10px 20px;background:var(--tx);color:var(--bg);cursor:pointer;text-decoration:none;display:inline-block}.btn.o{background:var(--bg2);color:var(--tx)}
-section{max-width:1200px;margin:auto;padding:90px 20px}
-.hero{padding-top:170px;text-align:center}.hero h1{font-size:clamp(44px,9vw,112px);line-height:.98}.hero p{max-width:520px;margin:24px auto 32px;color:var(--mu);font-size:19px}.hero .btn{margin:4px}
-h2{font-size:clamp(30px,5vw,52px);margin-bottom:24px}
+section{max-width:1200px;margin:auto;padding:44px 20px}
+.hero{padding-top:130px;padding-bottom:16px;text-align:center}.hero h1{font-size:clamp(44px,9vw,112px);line-height:.98}.hero p{max-width:520px;margin:24px auto 32px;color:var(--mu);font-size:19px}.hero .btn{margin:4px}
+h2{font-size:clamp(30px,5vw,52px);margin-bottom:18px}h1,h2{width:fit-content;max-width:100%}.hero h1,.ct h2{margin-inline:auto}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px}.tabs button{white-space:nowrap}
 .grid{columns:3 280px;column-gap:18px}
 .c{position:relative;break-inside:avoid;margin-bottom:18px;border-radius:26px;overflow:hidden;background:var(--bg2);border:1px solid var(--ln);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
@@ -27,7 +27,7 @@ h2{font-size:clamp(30px,5vw,52px);margin-bottom:24px}
 .rg{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;z-index:2}
 .tg{position:absolute;top:12px;font-size:11px;padding:3px 9px;border-radius:99px;background:#0007;color:#fff;z-index:1}
 .sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.sv div{padding:30px;border-radius:26px;background:var(--cd);backdrop-filter:blur(20px);border:1px solid var(--ln)}.sv h3{font-size:22px;margin-bottom:8px}.sv p,footer{color:var(--mu)}
-.ct{text-align:center}.ct h2{font-size:clamp(36px,7vw,80px)}footer{text-align:center;padding:30px 20px 50px;font-size:13px}footer a{cursor:pointer;text-decoration:underline}
+.ct{text-align:center}.ct h2{font-size:clamp(36px,7vw,80px)}footer{text-align:center;padding:10px 20px 40px;font-size:13px}footer a{cursor:pointer;text-decoration:underline}
 #adm .sh{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);display:flex;justify-content:flex-end}
 #adm .sb{width:min(460px,100%);height:100%;overflow:auto;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 40px}
 .sb h3{margin:22px 0 10px}.sb input,.sb select{width:100%;padding:10px 12px;margin:4px 0;border-radius:12px;border:1px solid var(--ln);background:var(--cd);color:var(--tx);font:15px var(--g)}
@@ -40,6 +40,44 @@ h2{font-size:clamp(30px,5vw,52px);margin-bottom:24px}
 .lbm,.lbv{width:100%;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#000;display:block;max-height:80vh;box-shadow:0 40px 100px rgba(0,0,0,.5)}
 .lbc{position:absolute;top:-14px;right:-6px;width:36px;height:36px;border:0;border-radius:50%;background:var(--cd);backdrop-filter:blur(14px);color:var(--tx);cursor:pointer;z-index:5}
 .lbt{color:#fff;text-align:center;margin-top:14px;font:500 15px var(--g)}
+
+@property --x{syntax:"<length-percentage>";inherits:false;initial-value:-400px}@property --y{syntax:"<length-percentage>";inherits:false;initial-value:-400px}
+h1,h2{background:radial-gradient(circle 180px at var(--x) var(--y),var(--h1),var(--h2) 55%,transparent 100%),linear-gradient(var(--tx),var(--tx));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+@media(hover:none){h1,h2{animation:dr 7s ease-in-out infinite alternate}}@keyframes dr{from{--x:-10%;--y:30%}to{--x:110%;--y:70%}}
+.cr.hv{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(139,123,255,.14);opacity:.7}
+.c::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--cx,-300px) var(--cy,-300px),rgba(255,255,255,.2),transparent 70%);opacity:0;transition:opacity .3s}.c:hover::after{opacity:1}
+section,footer,nav{position:relative}nav{position:fixed}
+.hero{overflow-x:clip}.hero::before,.hero::after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;filter:blur(90px);opacity:.4;z-index:-1;animation:fl 12s ease-in-out infinite alternate}
+.hero::before{left:-40px;top:90px;background:#b6a8ff}.hero::after{right:-40px;top:200px;background:#8fd3ff;animation-delay:-6s}@keyframes fl{to{transform:translate(40px,50px) scale(1.15)}}
+.bd{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;margin-bottom:22px;border-radius:99px;background:var(--cd);backdrop-filter:blur(16px);border:1px solid var(--ln);font-size:13px;color:var(--mu)}
+.bd i{width:7px;height:7px;border-radius:50%;background:#34c759;box-shadow:0 0 0 0 #34c75988;animation:pu 2s infinite}@keyframes pu{70%{box-shadow:0 0 0 9px #34c75900}}
+.rv{opacity:0}.rv.in{opacity:1;animation:up .9s cubic-bezier(.2,.8,.2,1) backwards}@keyframes up{from{opacity:0;transform:translateY(28px)}}
+.sr{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 22px;-webkit-overflow-scrolling:touch}.sr .c{flex:0 0 min(230px,58vw);margin:0;scroll-snap-align:start}.m.s{aspect-ratio:9/16}
+.lbv.s,.lbm.s{aspect-ratio:9/16;width:auto;height:min(80vh,700px);margin:auto}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1}}
+
+:root{--h1:#8e8e93;--h2:#3a3a3c;--gl:rgba(0,0,0,.06);--bl:#c3c3c9}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--h1:#fff;--h2:#8e8e93;--gl:rgba(255,255,255,.07);--bl:#58585d}}
+:root[data-theme=dark]{--h1:#fff;--h2:#8e8e93;--gl:rgba(255,255,255,.07);--bl:#58585d}
+.c::after{background:radial-gradient(240px circle at var(--cx,-300px) var(--cy,-300px),rgba(255,255,255,.09),transparent 70%)}
+.hero::before,.hero::after{display:none}
+.bgm{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}.bgm i{position:absolute;border-radius:50%;background:var(--bl);filter:blur(100px);opacity:.5;animation:fl 20s ease-in-out infinite alternate}
+.bgm i:nth-child(1){width:440px;height:440px;left:-5%;top:8%}.bgm i:nth-child(2){width:380px;height:380px;right:-6%;top:42%;animation-delay:-8s}.bgm i:nth-child(3){width:420px;height:420px;left:30%;bottom:-12%;animation-delay:-14s}
+.so{margin-top:14px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.tb{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 10px}.tb button{padding:8px 14px}.ex{padding:10px;border-radius:14px;background:var(--bg2);margin:-2px 0 8px}.ex small{display:block;margin-top:6px}
+@media(max-width:520px){nav a{padding:6px 8px;font-size:13px}nav b{margin-right:4px}}
+
+:root{--gc:rgba(255,255,255,.95)}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--gc:rgba(29,29,31,.55)}}
+:root[data-theme=light]{--gc:rgba(29,29,31,.55)}
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+.c::before{content:"";position:absolute;inset:0;z-index:4;border-radius:inherit;padding:1.5px;pointer-events:none;background:radial-gradient(240px circle at var(--cx,-300px) var(--cy,-300px),var(--gc),transparent 65%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:var(--o,0);transition:opacity .2s}
+.c{-webkit-tap-highlight-color:transparent}
+.sb input[type=color]{height:42px;padding:4px;cursor:pointer}
+@keyframes sp{to{--a:360deg}}
+@media(hover:none){.c:hover{transform:none;box-shadow:none}.c::before{background:conic-gradient(from var(--a),transparent 0 62%,var(--gc) 85%,transparent 100%);opacity:0}.c.act::before{opacity:.9;animation:sp 4.5s linear infinite}}
+@media(max-width:700px){section{padding:34px 16px}.hero{padding-top:104px}.bgm i{filter:blur(70px)}.cap{padding:8px 12px;font-size:13px}.sv div{padding:22px}}
+@media(prefers-reduced-motion:reduce){.c.act::before{animation:none!important}}
 </style></head><body>
 <div id="app"></div><div id="adm"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -48,7 +86,7 @@ h2{font-size:clamp(30px,5vw,52px);margin-bottom:24px}
 const SB_URL="https://lrcauxpiqbhtecseczlt.supabase.co",SB_KEY="sb_publishable_LGUNrRHAKUnJcYaEN8YxkA_RFaIwFhs",ADMIN_EMAIL="sifatarafat60@gmail.com"; // <- nijer email dao (setup.sql-er email-er sathe same)
 /* ================== */
 const sb=supabase.createClient(SB_URL,SB_KEY),$=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
-let S={h:"Edits that",h2:"hold attention.",sub:"Vexel Studio crafts scroll-stopping thumbnails and cinematic video edits for creators and brands.",email:"hello@vexel.studio",wa:""},I=[],F='all',user=null,adm=0,msg='';
+let S={br:"Vexel",bd:"Taking new projects",ft:"Vexel Studio",ig:"",yt:"",fb:"",be:"",sv:[{h:"Video Editing",p:"Reels, vlogs, ads and long-form with retention-first pacing, sound and colour."},{h:"Thumbnails",p:"Click-worthy designs built to lift your CTR."},{h:"Retouch & Grade",p:"Colour correction, cleanup and finishing that elevates raw footage."}],h:"Edits that",h2:"hold attention.",sub:"Vexel Studio crafts scroll-stopping thumbnails and cinematic video edits for creators and brands.",email:"hello@vexel.studio",wa:""},I=[],F='all',user=null,adm=0,msg='';
 const L={all:'All',v:'Videos',th:'Thumbnails',ba:'Before / After'},touch=matchMedia('(hover:none)').matches,isA=()=>user&&user.email&&user.email.toLowerCase()==ADMIN_EMAIL.toLowerCase();
 const gr=n=>`linear-gradient(135deg,hsl(0 0% ${62-n*5}%),hsl(0 0% ${82-n*4}%))`;
 const yt=u=>(String(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/)||[])[1],dr=u=>(String(u||'').match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=|thumbnail\?id=)([\w-]+)/)||[])[1];
@@ -56,59 +94,82 @@ const ytSrc=(y,hover)=>`https://www.youtube.com/embed/${y}?autoplay=1&playsinlin
 function ifr(src,hover){const f=document.createElement('iframe');f.allow='autoplay;encrypted-media;fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.src=src;f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0;'+(hover?'pointer-events:none':'');return f}
 function lb(c){const i=I.find(x=>x.id==c.dataset.id);if(!i)return;const o=document.createElement('div'),b=document.createElement('div');o.className='lb';b.className='lbx';
  const y=yt(i.a),d=dr(i.a);let m;
- if(i.t=='v'&&!y&&!d&&i.a){m=document.createElement('video');m.src=i.a;m.controls=true;m.autoplay=true;m.playsInline=true;m.className='lbv'}
- else{m=c.querySelector('.m').cloneNode(true);m.querySelectorAll('iframe,.zm,video').forEach(e=>e.remove());m.classList.add('lbm');
+ if((i.t=='v'||i.t=='s')&&!y&&!d&&i.a){m=document.createElement('video');m.src=i.a;m.controls=true;m.autoplay=true;m.playsInline=true;m.className='lbv'+(i.t=='s'?' s':'')}
+ else{m=c.querySelector('.m').cloneNode(true);m.querySelectorAll('iframe,.zm,video').forEach(e=>e.remove());m.classList.add('lbm');if(i.t=='s')m.classList.add('s');
   if(y||d)m.appendChild(ifr(y?ytSrc(y):drSrc(d)));
   const r=m.querySelector('.rg');if(r)r.oninput=()=>m.style.setProperty('--p',r.value+'%')}
  const x=document.createElement('button');x.className='lbc';x.textContent='✕';
  const cl=()=>{o.classList.remove('on');setTimeout(()=>o.remove(),250);document.removeEventListener('keydown',k)},k=e=>e.key=='Escape'&&cl();
  x.onclick=cl;o.onclick=e=>{if(e.target==o)cl()};document.addEventListener('keydown',k);
  b.append(m,x);const t=document.createElement('div');t.className='lbt';t.textContent=i.title+(i.tag?' · '+i.tag:'');b.append(t);o.append(b);document.body.append(o);requestAnimationFrame(()=>o.classList.add('on'))}
+function reveal(){const o=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}}),{threshold:.12});document.querySelectorAll('.c,.sv>div,#app h2,.bd').forEach((e,n)=>{e.classList.add('rv');e.style.animationDelay=(n%4)*70+'ms';o.observe(e)})}
 function card(i,n){let m;
- if(i.t=='v'){const y=yt(i.a),d=dr(i.a);m=`<div class="m" ${y?`data-yt="${y}"`:d?`data-dr="${d}"`:''} style="background:${gr(n)}">${y?`<img loading="lazy" src="https://img.youtube.com/vi/${y}/hqdefault.jpg" alt="">`:d?`<img loading="lazy" src="https://drive.google.com/thumbnail?id=${d}&sz=w800" alt="">`:i.a?`<video muted loop playsinline preload="metadata" src="${E(i.a)}#t=0.1"></video>`:`<div class="ph">▶</div>`}</div>`}
+ if(i.t=='v'||i.t=='s'){const y=yt(i.a),d=dr(i.a);m=`<div class="m${i.t=='s'?' s':''}" ${y?`data-yt="${y}"`:d?`data-dr="${d}"`:''} style="background:${gr(n)}">${y?`<img loading="lazy" src="https://img.youtube.com/vi/${y}/hqdefault.jpg" alt="">`:d?`<img loading="lazy" src="https://drive.google.com/thumbnail?id=${d}&sz=w800" alt="">`:i.a?`<video muted loop playsinline preload="metadata" src="${E(i.a)}#t=0.1"></video>`:`<div class="ph">▶</div>`}</div>`}
  else if(i.t=='th')m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="${E(i.title)}">`:`<div class="ph">Aa</div>`}</div>`;
  else m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="After">`:''}<div class="bf" style="background:${gr(n+3)}">${i.b?`<img loading="lazy" src="${E(i.b)}" alt="Before">`:''}</div><span class="tg" style="left:12px">Before</span><span class="tg" style="right:12px">After</span><div class="ln"></div><input class="rg" type="range" min="0" max="100" value="50" aria-label="Before after slider"><button class="zm" aria-label="Zoom">⤢</button></div>`;
  return `<article class="c" data-id="${i.id}">${m}<div class="cap"><b class="g">${E(i.title)}</b><span>${E(i.tag)}</span></div></article>`}
-function render(){const it=I.filter(x=>F=='all'||x.t==F);
-$('#app').innerHTML=`<nav><b>Vexel</b><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></nav>
-<section class="hero"><h1>${E(S.h)}<br><em>${E(S.h2)}</em></h1><p>${E(S.sub)}</p><a class="btn" href="#work">View work</a> <a class="btn o" href="#contact">Get in touch</a></section>
-<section id="work"><h2>Selected <em>work</em></h2><div class="tabs">${Object.entries(L).map(([k,v])=>`<button class="btn ${F==k?'':'o'}" data-f="${k}">${v}</button>`).join('')}</div><div class="grid">${it.map((x,n)=>card(x,n)).join('')||'<p>Nothing here yet.</p>'}</div></section>
-<section id="services"><h2>What we <em>do</em></h2><div class="sv"><div><h3>Video Editing</h3><p>Reels, vlogs, ads and long-form with retention-first pacing, sound and colour.</p></div><div><h3>Thumbnails</h3><p>Click-worthy designs built to lift your CTR.</p></div><div><h3>Retouch & Grade</h3><p>Colour correction, cleanup and finishing that elevates raw footage.</p></div></div></section>
-<section id="contact" class="ct"><h2>Let’s make something <em>great.</em></h2><a class="btn" href="mailto:${E(S.email)}">${E(S.email)}</a>${S.wa?` <a class="btn o" href="https://wa.me/${E(S.wa)}">WhatsApp</a>`:''}</section><footer>© Vexel Studio · <a id="ao">Admin</a></footer>`;
+const CO=[['g1','Heading gradient: highlight color','#ffffff'],['g2','Heading gradient: fade color','#8e8e93'],['gc','Card border glow color','#ffffff']];
+function th(){const r=document.documentElement.style;[['g1','--h1'],['g2','--h2'],['gc','--gc']].forEach(([k,v])=>S[k]?r.setProperty(v,S[k]):r.removeProperty(v))}
+function render(){th();const it=I.filter(x=>x.t!='s'&&(F=='all'||x.t==F)),sh=I.filter(x=>x.t=='s'),shS=!sh.length?'':`<section id="shorts"><h2>Quick <em>shorts</em></h2><div class="sr">${sh.length?sh.map((x,n)=>card(x,n)).join(''):[0,1,2,3].map(n=>`<article class="c"><div class="m s" style="background:${gr(n)}"><div class="ph">▶</div></div><div class="cap"><b class="g">Coming soon</b></div></article>`).join('')}</div></section>`;
+$('#app').innerHTML=`<nav><b>${E(S.br)}</b><a href="#work">Work</a>${sh.length?'<a href="#shorts">Shorts</a>':''}<a href="#services">Services</a><a href="#contact">Contact</a></nav>
+<section class="hero">${S.bd?`<div class="bd"><i></i>${E(S.bd)}</div>`:''}<h1>${E(S.h)}<br><em>${E(S.h2)}</em></h1><p>${E(S.sub)}</p><a class="btn" href="#work">View work</a> <a class="btn o" href="#contact">Get in touch</a></section>
+<section id="work"><h2>Selected <em>work</em></h2><div class="tabs">${Object.entries(L).map(([k,v])=>`<button class="btn ${F==k?'':'o'}" data-f="${k}">${v}</button>`).join('')}</div><div class="grid">${it.map((x,n)=>card(x,n)).join('')||'<p>Nothing here yet.</p>'}</div></section>${shS}
+<section id="services"><h2>What we <em>do</em></h2><div class="sv">${(S.sv||[]).map(v=>`<div><h3>${E(v.h)}</h3><p>${E(v.p)}</p></div>`).join('')}</div></section>
+<section id="contact" class="ct"><h2>Let’s make something <em>great.</em></h2><a class="btn" href="mailto:${E(S.email)}">${E(S.email)}</a>${S.wa?` <a class="btn o" href="https://wa.me/${E(S.wa)}">WhatsApp</a>`:''}<div class="so">${[['ig','Instagram'],['yt','YouTube'],['fb','Facebook'],['be','Behance']].filter(([k])=>S[k]).map(([k,l])=>`<a class="btn o" target="_blank" rel="noopener" href="${E(S[k])}">${l}</a>`).join('')}</div></section><footer>© ${E(S.ft)} · <a id="ao">Admin</a></footer>`;
 document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{F=b.dataset.f;render()});
 $('#ao').onclick=()=>{adm=1;ar()};
-document.querySelectorAll('.c').forEach(c=>{const m=c.querySelector('.m'),v=c.querySelector('video'),r=c.querySelector('.rg'),Y=m.dataset.yt,D=m.dataset.dr;let p,q;
+const ao=touch?new IntersectionObserver(e=>e.forEach(x=>x.target.classList.toggle('act',x.isIntersecting)),{threshold:.7}):null;
+document.querySelectorAll('.c').forEach(c=>{ao&&ao.observe(c);const m=c.querySelector('.m'),v=c.querySelector('video'),r=c.querySelector('.rg'),Y=m.dataset.yt,D=m.dataset.dr;let p,q;
  if(v){p=()=>v.play().catch(()=>{});q=()=>{v.pause();v.currentTime=.1}}
  else if(Y||D){p=()=>{if(!m.querySelector('iframe'))m.appendChild(ifr(Y?ytSrc(Y,1):drSrc(D),1))};q=()=>{const f=m.querySelector('iframe');f&&f.remove()}}
  if(p){c.onmouseenter=p;c.onmouseleave=q;if(touch)new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting?p():q()),{threshold:.6}).observe(c)}
- if(r){r.oninput=()=>m.style.setProperty('--p',r.value+'%');c.querySelector('.zm').onclick=()=>lb(c)}else{c.style.cursor='zoom-in';c.onclick=()=>lb(c)}})}
+ if(r){r.oninput=()=>m.style.setProperty('--p',r.value+'%');c.querySelector('.zm').onclick=()=>lb(c)}else{c.style.cursor='zoom-in';c.onclick=()=>lb(c)}});reveal()}
 async function load(){try{const a=await sb.from('items').select('*').order('pos'),b=await sb.from('settings').select('data').eq('id',1).maybeSingle();if(a.data)I=a.data;if(b.data&&b.data.data)S={...S,...b.data.data}}catch(e){}render();if(adm)ar()}
+let tab='items',op=-1;
+const up=async f=>{if(!f)return'';const p=Date.now()+'-'+Math.random().toString(36).slice(2,7)+'-'+f.name.replace(/[^\w.]/g,'_'),r=await sb.storage.from('media').upload(p,f);if(r.error)throw r.error;return sb.storage.from('media').getPublicUrl(p).data.publicUrl};
+const sset=async()=>{const r=await sb.from('settings').upsert({id:1,data:S});msg=r.error?'Error: '+r.error.message:'Saved ✓';render();ar()};
+const TY=v=>[['v','Video'],['th','Thumbnail'],['ba','Before / After'],['s','Short (vertical)']].map(([k,l])=>`<option value="${k}"${v==k?' selected':''}>${l}</option>`).join('');
 function ar(){const a=$('#adm');if(!adm){a.innerHTML='';return}let h;
 if(!user)h=`<h3>Admin sign in</h3><input id="le" type="email" placeholder="Email" autocomplete="email"><input id="lp" type="password" placeholder="Password (min 6)" autocomplete="current-password"><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="si">Sign in</button><button class="btn o" id="su">Create account</button></div><p><small>${E(msg)}</small></p><p><small>Account create korle email confirm korte hobe. Shudhu admin email-er account edit korte parbe.</small></p>`;
 else if(!isA())h=`<h3>Not authorised</h3><p><small>${E(user.email)} admin account na.</small></p><button class="btn o" id="so">Sign out</button>`;
-else h=`<small>Signed in: ${E(user.email)}</small> <button class="btn o" id="so" style="padding:4px 12px">Sign out</button>
-<h3>Site text</h3>${[['h','Headline'],['h2','Italic headline'],['sub','Subtext'],['email','Email'],['wa','WhatsApp number (no +)']].map(([k,l])=>`<small>${l}</small><input data-s="${k}" value="${E(S[k])}">`).join('')}
-<h3>Add item</h3><select id="nt"><option value="v">Video</option><option value="th">Thumbnail</option><option value="ba">Before / After</option></select><input id="nti" placeholder="Title"><input id="ntg" placeholder="Tag (e.g. YouTube)">
-<small>Main file (video / thumbnail / AFTER image)</small><input id="nf" type="file" accept="video/*,image/*"><input id="nu" placeholder="…or paste a URL"><small>BEFORE image (only Before / After)</small><input id="nb" type="file" accept="image/*">
-<button class="btn" id="add" style="margin-top:8px">Add</button> <small id="st">${E(msg)}</small>
-<h3>Items (${I.length})</h3>${I.map((x,n)=>`<div class="r"><input data-n="${n}" value="${E(x.title)}"><button class="btn o" data-m="${n}:-1">↑</button><button class="btn o" data-m="${n}:1">↓</button><button class="btn o" data-d="${n}">✕</button></div>`).join('')}<p><small>Sob change sathe sathe live hoy.</small></p>`;
+else{const P={
+ items:()=>I.map((x,n)=>`<div class="r"><input data-n="${n}" value="${E(x.title)}"><button class="btn o" data-m="${n}:-1">↑</button><button class="btn o" data-m="${n}:1">↓</button><button class="btn o" data-o="${n}">${op==n?'▲':'Edit'}</button><button class="btn o" data-d="${n}">✕</button></div>${op==n?`<div class="ex"><select data-e="t">${TY(x.t)}</select><input data-e="title" value="${E(x.title)}" placeholder="Title"><input data-e="tag" value="${E(x.tag)}" placeholder="Tag"><small>Main link (video / thumbnail / AFTER)</small><input data-e="a" value="${E(x.a)}"><input data-ef="a" type="file" accept="video/*,image/*"><small>BEFORE image link</small><input data-e="b" value="${E(x.b)}"><input data-ef="b" type="file" accept="image/*"><button class="btn" data-si="${n}" style="margin-top:8px">Save item</button></div>`:''}`).join('')||'<small>No items yet. Add tab use koro.</small>',
+ add:()=>`<select id="nt">${TY('v')}</select><input id="nti" placeholder="Title"><input id="ntg" placeholder="Tag (e.g. YouTube)"><small>Main file (video / thumbnail / AFTER / short)</small><input id="nf" type="file" accept="video/*,image/*"><input id="nu" placeholder="…or paste YouTube / Drive / file URL"><small>BEFORE image (only Before / After)</small><input id="nb" type="file" accept="image/*"><button class="btn" id="add" style="margin-top:8px">Add</button>`,
+ sv:()=>(S.sv||[]).map((v,i)=>`<div class="ex"><input data-sh="${i}" value="${E(v.h)}" placeholder="Service title"><input data-sp="${i}" value="${E(v.p)}" placeholder="Description"><button class="btn o" data-sd="${i}" style="margin-top:6px">Delete</button></div>`).join('')+`<button class="btn" id="sa" style="margin-top:8px">+ Add service</button>`,
+ site:()=>[['br','Brand name'],['bd','Badge text (empty = hide)'],['h','Headline'],['h2','Italic headline'],['sub','Subtext'],['email','Email'],['wa','WhatsApp number (no +)'],['ig','Instagram link'],['yt','YouTube link'],['fb','Facebook link'],['be','Behance link'],['ft','Footer name']].map(([k,l])=>`<small>${l}</small><input data-s="${k}" value="${E(S[k])}">`).join('')+'<h3>Colors</h3>'+CO.map(([k,l,d])=>`<small>${l}</small><div class="r"><input type="color" data-s="${k}" value="${E(S[k]||d)}"><button class="btn o" data-rc="${k}">Reset</button></div>`).join('')+'<small>Reset dile theme er default color fire ashbe.</small>'};
+ h=`<div class="tb">${[['items','Items'],['add','Add'],['sv','Services'],['site','Site']].map(([k,v])=>`<button class="btn ${tab==k?'':'o'}" data-t="${k}">${v}</button>`).join('')}</div><small>${E(user.email)}</small> <button class="btn o" id="so" style="padding:3px 12px">Sign out</button> <small>${E(msg)}</small>${P[tab]()}<p><small>Sob change sathe sathe live hoy.</small></p>`}
 a.innerHTML=`<div class="sh"><div class="sb"><div class="hd"><h3 class="g" style="margin:0">Admin panel</h3><button class="btn o" id="x">Close</button></div>${h}</div></div>`;
-$('#x').onclick=()=>{adm=0;ar()};const g=id=>$(id);
+$('#x').onclick=()=>{adm=0;ar()};const g=id=>$(id),Q=k=>a.querySelectorAll(k);
 if(g('#si'))g('#si').onclick=async()=>{const r=await sb.auth.signInWithPassword({email:$('#le').value,password:$('#lp').value});msg=r.error?r.error.message:'';ar()};
 if(g('#su'))g('#su').onclick=async()=>{const r=await sb.auth.signUp({email:$('#le').value,password:$('#lp').value});msg=r.error?r.error.message:'Check your email to confirm, then sign in.';ar()};
 if(g('#so'))g('#so').onclick=()=>sb.auth.signOut();
 if(!isA())return;
-const ck=(r,ok)=>{if(r&&r.error){msg='Error: '+r.error.message;ar()}else ok()};
-a.querySelectorAll('[data-s]').forEach(i=>i.onchange=async()=>{S[i.dataset.s]=i.value;const r=await sb.from('settings').upsert({id:1,data:S});ck(r,render)});
-a.querySelectorAll('[data-n]').forEach(i=>i.onchange=async()=>{const x=I[i.dataset.n];x.title=i.value;ck(await sb.from('items').update({title:x.title}).eq('id',x.id),render)});
-a.querySelectorAll('[data-d]').forEach(b=>b.onclick=async()=>{if(!confirm('Delete?'))return;ck(await sb.from('items').delete().eq('id',I[b.dataset.d].id),load)});
-a.querySelectorAll('[data-m]').forEach(b=>b.onclick=async()=>{const[n,d]=b.dataset.m.split(':').map(Number),j=n+d;if(j<0||j>=I.length)return;const x=I[n],y=I[j];
- await sb.from('items').update({pos:y.pos}).eq('id',x.id);await sb.from('items').update({pos:x.pos}).eq('id',y.id);load()});
-g('#add').onclick=async()=>{const st=$('#st');try{st.textContent='Uploading…';
- const up=async f=>{if(!f)return'';const p=Date.now()+'-'+Math.random().toString(36).slice(2,7)+'-'+f.name.replace(/[^\w.]/g,'_'),r=await sb.storage.from('media').upload(p,f);if(r.error)throw r.error;return sb.storage.from('media').getPublicUrl(p).data.publicUrl};
- const row={t:$('#nt').value,title:$('#nti').value||'Untitled',tag:$('#ntg').value,a:(await up($('#nf').files[0]))||$('#nu').value.trim(),b:await up($('#nb').files[0]),pos:-Date.now()};
- const r=await sb.from('items').insert(row);if(r.error)throw r.error;msg='Added ✓';load()}catch(e){msg='Error: '+(e.message||'failed');ar()}}}
+const ck=(r,ok)=>{if(r&&r.error){msg='Error: '+r.error.message;ar()}else{msg='Saved ✓';ok()}};
+Q('[data-t]').forEach(b=>b.onclick=()=>{tab=b.dataset.t;op=-1;msg='';ar()});
+Q('[data-s]').forEach(i=>i.onchange=()=>{S[i.dataset.s]=i.value;sset()});
+Q('[data-rc]').forEach(b=>b.onclick=()=>{S[b.dataset.rc]='';sset()});
+Q('[data-sh]').forEach(i=>i.onchange=()=>{S.sv[i.dataset.sh].h=i.value;sset()});
+Q('[data-sp]').forEach(i=>i.onchange=()=>{S.sv[i.dataset.sp].p=i.value;sset()});
+Q('[data-sd]').forEach(b=>b.onclick=()=>{S.sv.splice(b.dataset.sd,1);sset()});
+if(g('#sa'))g('#sa').onclick=()=>{(S.sv=S.sv||[]).push({h:'New service',p:'Describe it'});sset()};
+Q('[data-n]').forEach(i=>i.onchange=async()=>{const x=I[i.dataset.n];x.title=i.value;ck(await sb.from('items').update({title:x.title}).eq('id',x.id),()=>{render();ar()})});
+Q('[data-o]').forEach(b=>b.onclick=()=>{op=op==b.dataset.o?-1:+b.dataset.o;ar()});
+Q('[data-d]').forEach(b=>b.onclick=async()=>{if(!confirm('Delete?'))return;ck(await sb.from('items').delete().eq('id',I[b.dataset.d].id),()=>{op=-1;load()})});
+Q('[data-m]').forEach(b=>b.onclick=async()=>{const[n,d]=b.dataset.m.split(':').map(Number),j=n+d;if(j<0||j>=I.length)return;const x=I[n],y=I[j];await sb.from('items').update({pos:y.pos}).eq('id',x.id);await sb.from('items').update({pos:x.pos}).eq('id',y.id);op=-1;load()});
+Q('[data-si]').forEach(b=>b.onclick=async()=>{const x=I[+b.dataset.si],w=b.closest('.ex'),v=k=>w.querySelector(`[data-e=${k}]`).value;try{msg='Saving…';ar();const fa=w.querySelector('[data-ef=a]').files[0],fb=w.querySelector('[data-ef=b]').files[0];
+ const r=await sb.from('items').update({t:v('t'),title:v('title'),tag:v('tag'),a:(await up(fa))||v('a').trim(),b:(await up(fb))||v('b').trim()}).eq('id',x.id);if(r.error)throw r.error;msg='Saved ✓';op=-1;load()}catch(e){msg='Error: '+(e.message||'failed');ar()}});
+if(g('#add'))g('#add').onclick=async()=>{try{const T=$('#nt').value,Ti=$('#nti').value||'Untitled',Tg=$('#ntg').value,Fa=$('#nf').files[0],Fb=$('#nb').files[0],U=$('#nu').value.trim();msg='Uploading…';ar();const row={t:T,title:Ti,tag:Tg,a:(await up(Fa))||U,b:await up(Fb),pos:-Date.now()};
+ const r=await sb.from('items').insert(row);if(r.error)throw r.error;msg='Added ✓';tab='items';load()}catch(e){msg='Error: '+(e.message||'failed');ar()}}}
 sb.auth.onAuthStateChange((_,s)=>{user=s?s.user:null;if(adm)ar()});
 sb.auth.getSession().then(r=>{user=r.data.session?r.data.session.user:null});
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+ const R=110,rs=x=>{x.style.removeProperty('--x');x.style.removeProperty('--y')};let px=0,py=0,pt=null,ra=0;
+ const tick=()=>{ra=0;const h=pt&&pt.closest?pt.closest('h1,h2'):null;
+  document.querySelectorAll('h1,h2').forEach(x=>{if(x===h){const b=x.getBoundingClientRect();x.style.setProperty('--x',px-b.left+'px');x.style.setProperty('--y',py-b.top+'px')}else rs(x)});
+  document.querySelectorAll('.c').forEach(c=>{const b=c.getBoundingClientRect(),dx=Math.max(b.left-px,0,px-b.right),dy=Math.max(b.top-py,0,py-b.bottom),d=Math.hypot(dx,dy),o=d<R?1-d/R:0;
+   if(o===0&&c._o===0)return;c._o=o;c.style.setProperty('--cx',px-b.left+'px');c.style.setProperty('--cy',py-b.top+'px');c.style.setProperty('--o',o.toFixed(2))})};
+ addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;pt=e.target;if(!ra)ra=requestAnimationFrame(tick)},{passive:true});
+ document.documentElement.addEventListener('pointerleave',()=>{pt=null;px=py=-9999;if(!ra)ra=requestAnimationFrame(tick)})}
+document.body.insertAdjacentHTML('afterbegin','<div class="bgm"><i></i><i></i><i></i></div>');
 render();load();
 </script></body></html>
