@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Vexel Studio</title>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="referrer" content="strict-origin-when-cross-origin"><title>Vexel Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f5f7;--bg2:#e8e8ed;--tx:#1d1d1f;--mu:#6e6e73;--cd:rgba(255,255,255,.72);--ln:rgba(0,0,0,.09);--g:"Space Grotesk",-apple-system,"Helvetica Neue",sans-serif;--s:"Playfair Display",Georgia,serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -33,6 +33,13 @@ h2{font-size:clamp(30px,5vw,52px);margin-bottom:24px}
 .sb h3{margin:22px 0 10px}.sb input,.sb select{width:100%;padding:10px 12px;margin:4px 0;border-radius:12px;border:1px solid var(--ln);background:var(--cd);color:var(--tx);font:15px var(--g)}
 .r{display:flex;gap:6px;align-items:center;padding:8px;border-radius:14px;background:var(--cd);margin:6px 0;border:1px solid var(--ln)}.r input{margin:0;flex:1;min-width:0}.r button{padding:6px 10px}
 .sb small{color:var(--mu)}.hd{display:flex;justify-content:space-between;align-items:center}
+
+.zm{position:absolute;top:12px;left:50%;transform:translateX(-50%);z-index:3;border:0;border-radius:99px;padding:4px 12px;background:var(--cd);backdrop-filter:blur(14px);color:var(--tx);cursor:pointer}
+.lb{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);opacity:0;transition:opacity .25s}.lb.on{opacity:1}
+.lbx{position:relative;width:min(1100px,100%);transform:scale(.9);transition:transform .35s cubic-bezier(.2,.8,.2,1)}.lb.on .lbx{transform:scale(1)}
+.lbm,.lbv{width:100%;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#000;display:block;max-height:80vh;box-shadow:0 40px 100px rgba(0,0,0,.5)}
+.lbc{position:absolute;top:-14px;right:-6px;width:36px;height:36px;border:0;border-radius:50%;background:var(--cd);backdrop-filter:blur(14px);color:var(--tx);cursor:pointer;z-index:5}
+.lbt{color:#fff;text-align:center;margin-top:14px;font:500 15px var(--g)}
 </style></head><body>
 <div id="app"></div><div id="adm"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -44,11 +51,24 @@ const sb=supabase.createClient(SB_URL,SB_KEY),$=s=>document.querySelector(s),E=s
 let S={h:"Edits that",h2:"hold attention.",sub:"Vexel Studio crafts scroll-stopping thumbnails and cinematic video edits for creators and brands.",email:"hello@vexel.studio",wa:""},I=[],F='all',user=null,adm=0,msg='';
 const L={all:'All',v:'Videos',th:'Thumbnails',ba:'Before / After'},touch=matchMedia('(hover:none)').matches,isA=()=>user&&user.email&&user.email.toLowerCase()==ADMIN_EMAIL.toLowerCase();
 const gr=n=>`linear-gradient(135deg,hsl(0 0% ${62-n*5}%),hsl(0 0% ${82-n*4}%))`;
+const yt=u=>(String(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/)||[])[1],dr=u=>(String(u||'').match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=|thumbnail\?id=)([\w-]+)/)||[])[1];
+const ytSrc=(y,hover)=>`https://www.youtube.com/embed/${y}?autoplay=1&playsinline=1&rel=0&modestbranding=1${hover?`&mute=1&controls=0&loop=1&playlist=${y}`:''}`,drSrc=d=>`https://drive.google.com/file/d/${d}/preview`;
+function ifr(src,hover){const f=document.createElement('iframe');f.allow='autoplay;encrypted-media;fullscreen';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';f.src=src;f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0;'+(hover?'pointer-events:none':'');return f}
+function lb(c){const i=I.find(x=>x.id==c.dataset.id);if(!i)return;const o=document.createElement('div'),b=document.createElement('div');o.className='lb';b.className='lbx';
+ const y=yt(i.a),d=dr(i.a);let m;
+ if(i.t=='v'&&!y&&!d&&i.a){m=document.createElement('video');m.src=i.a;m.controls=true;m.autoplay=true;m.playsInline=true;m.className='lbv'}
+ else{m=c.querySelector('.m').cloneNode(true);m.querySelectorAll('iframe,.zm,video').forEach(e=>e.remove());m.classList.add('lbm');
+  if(y||d)m.appendChild(ifr(y?ytSrc(y):drSrc(d)));
+  const r=m.querySelector('.rg');if(r)r.oninput=()=>m.style.setProperty('--p',r.value+'%')}
+ const x=document.createElement('button');x.className='lbc';x.textContent='✕';
+ const cl=()=>{o.classList.remove('on');setTimeout(()=>o.remove(),250);document.removeEventListener('keydown',k)},k=e=>e.key=='Escape'&&cl();
+ x.onclick=cl;o.onclick=e=>{if(e.target==o)cl()};document.addEventListener('keydown',k);
+ b.append(m,x);const t=document.createElement('div');t.className='lbt';t.textContent=i.title+(i.tag?' · '+i.tag:'');b.append(t);o.append(b);document.body.append(o);requestAnimationFrame(()=>o.classList.add('on'))}
 function card(i,n){let m;
- if(i.t=='v')m=`<div class="m" style="background:${gr(n)}">${i.a?`<video muted loop playsinline preload="metadata" src="${E(i.a)}#t=0.1"></video>`:`<div class="ph">▶</div>`}</div>`;
+ if(i.t=='v'){const y=yt(i.a),d=dr(i.a);m=`<div class="m" ${y?`data-yt="${y}"`:d?`data-dr="${d}"`:''} style="background:${gr(n)}">${y?`<img loading="lazy" src="https://img.youtube.com/vi/${y}/hqdefault.jpg" alt="">`:d?`<img loading="lazy" src="https://drive.google.com/thumbnail?id=${d}&sz=w800" alt="">`:i.a?`<video muted loop playsinline preload="metadata" src="${E(i.a)}#t=0.1"></video>`:`<div class="ph">▶</div>`}</div>`}
  else if(i.t=='th')m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="${E(i.title)}">`:`<div class="ph">Aa</div>`}</div>`;
- else m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="After">`:''}<div class="bf" style="background:${gr(n+3)}">${i.b?`<img loading="lazy" src="${E(i.b)}" alt="Before">`:''}</div><span class="tg" style="left:12px">Before</span><span class="tg" style="right:12px">After</span><div class="ln"></div><input class="rg" type="range" min="0" max="100" value="50" aria-label="Before after slider"></div>`;
- return `<article class="c">${m}<div class="cap"><b class="g">${E(i.title)}</b><span>${E(i.tag)}</span></div></article>`}
+ else m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="After">`:''}<div class="bf" style="background:${gr(n+3)}">${i.b?`<img loading="lazy" src="${E(i.b)}" alt="Before">`:''}</div><span class="tg" style="left:12px">Before</span><span class="tg" style="right:12px">After</span><div class="ln"></div><input class="rg" type="range" min="0" max="100" value="50" aria-label="Before after slider"><button class="zm" aria-label="Zoom">⤢</button></div>`;
+ return `<article class="c" data-id="${i.id}">${m}<div class="cap"><b class="g">${E(i.title)}</b><span>${E(i.tag)}</span></div></article>`}
 function render(){const it=I.filter(x=>F=='all'||x.t==F);
 $('#app').innerHTML=`<nav><b>Vexel</b><a href="#work">Work</a><a href="#services">Services</a><a href="#contact">Contact</a></nav>
 <section class="hero"><h1>${E(S.h)}<br><em>${E(S.h2)}</em></h1><p>${E(S.sub)}</p><a class="btn" href="#work">View work</a> <a class="btn o" href="#contact">Get in touch</a></section>
@@ -57,9 +77,11 @@ $('#app').innerHTML=`<nav><b>Vexel</b><a href="#work">Work</a><a href="#services
 <section id="contact" class="ct"><h2>Let’s make something <em>great.</em></h2><a class="btn" href="mailto:${E(S.email)}">${E(S.email)}</a>${S.wa?` <a class="btn o" href="https://wa.me/${E(S.wa)}">WhatsApp</a>`:''}</section><footer>© Vexel Studio · <a id="ao">Admin</a></footer>`;
 document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{F=b.dataset.f;render()});
 $('#ao').onclick=()=>{adm=1;ar()};
-document.querySelectorAll('.c').forEach(c=>{const v=c.querySelector('video'),r=c.querySelector('.rg');
- if(v){const p=()=>v.play().catch(()=>{}),q=()=>{v.pause();v.currentTime=.1};c.onmouseenter=p;c.onmouseleave=q;if(touch)new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting?p():q()),{threshold:.6}).observe(c)}
- if(r)r.oninput=()=>c.querySelector('.m').style.setProperty('--p',r.value+'%')})}
+document.querySelectorAll('.c').forEach(c=>{const m=c.querySelector('.m'),v=c.querySelector('video'),r=c.querySelector('.rg'),Y=m.dataset.yt,D=m.dataset.dr;let p,q;
+ if(v){p=()=>v.play().catch(()=>{});q=()=>{v.pause();v.currentTime=.1}}
+ else if(Y||D){p=()=>{if(!m.querySelector('iframe'))m.appendChild(ifr(Y?ytSrc(Y,1):drSrc(D),1))};q=()=>{const f=m.querySelector('iframe');f&&f.remove()}}
+ if(p){c.onmouseenter=p;c.onmouseleave=q;if(touch)new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting?p():q()),{threshold:.6}).observe(c)}
+ if(r){r.oninput=()=>m.style.setProperty('--p',r.value+'%');c.querySelector('.zm').onclick=()=>lb(c)}else{c.style.cursor='zoom-in';c.onclick=()=>lb(c)}})}
 async function load(){try{const a=await sb.from('items').select('*').order('pos'),b=await sb.from('settings').select('data').eq('id',1).maybeSingle();if(a.data)I=a.data;if(b.data&&b.data.data)S={...S,...b.data.data}}catch(e){}render();if(adm)ar()}
 function ar(){const a=$('#adm');if(!adm){a.innerHTML='';return}let h;
 if(!user)h=`<h3>Admin sign in</h3><input id="le" type="email" placeholder="Email" autocomplete="email"><input id="lp" type="password" placeholder="Password (min 6)" autocomplete="current-password"><div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="si">Sign in</button><button class="btn o" id="su">Create account</button></div><p><small>${E(msg)}</small></p><p><small>Account create korle email confirm korte hobe. Shudhu admin email-er account edit korte parbe.</small></p>`;
