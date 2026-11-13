@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="description" content="Scroll-stopping thumbnails and cinematic video edits for creators and brands."><meta name="theme-color" content="#1c1c1e"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231d1d1f'/%3E%3Ctext x='32' y='45' font-size='36' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'%3EV%3C/text%3E%3C/svg%3E"><title>Vexel Studio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://lrcauxpiqbhtecseczlt.supabase.co" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f5f5f7;--bg2:#e8e8ed;--tx:#1d1d1f;--mu:#6e6e73;--cd:rgba(255,255,255,.72);--ln:rgba(0,0,0,.09);--g:"Space Grotesk",-apple-system,"Helvetica Neue",sans-serif;--s:"Playfair Display",Georgia,serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -44,7 +44,7 @@ h2{font-size:clamp(30px,5vw,52px);margin-bottom:18px}h1,h2{width:fit-content;max
 
 @property --x{syntax:"<length-percentage>";inherits:false;initial-value:-400px}@property --y{syntax:"<length-percentage>";inherits:false;initial-value:-400px}
 h1,h2{background:radial-gradient(circle 180px at var(--x) var(--y),var(--h1),var(--h2) 55%,transparent 100%),linear-gradient(var(--tx),var(--tx));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
-@media(hover:none){h1,h2{animation:dr 7s ease-in-out infinite alternate}}@keyframes dr{from{--x:-10%;--y:30%}to{--x:110%;--y:70%}}
+@keyframes dr{from{--x:-10%;--y:30%}to{--x:110%;--y:70%}}
 .cr.hv{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(139,123,255,.14);opacity:.7}
 .gl::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--cx,-300px) var(--cy,-300px),rgba(255,255,255,.2),transparent 70%);opacity:0;transition:opacity .3s}.gl:hover::after{opacity:1}
 section,footer,nav{position:relative}nav{position:fixed}
@@ -105,6 +105,52 @@ nav{overflow-x:auto;scrollbar-width:none;white-space:nowrap}nav::-webkit-scrollb
 .cap{position:static;left:auto;right:auto;bottom:auto;border-radius:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:12px 16px 14px;align-items:center}
 .cap b,.cap span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cap span{flex:none;max-width:45%;font-size:13px}
 .sr .cap{padding:10px 12px 12px;font-size:13px}
+/* ---- responsive + perf ---- */
+html{overflow-x:clip}:root{--pad:20px}
+:root{--lg1:rgba(255,255,255,.66);--lg2:rgba(255,255,255,.3);--lgb:rgba(255,255,255,.8);--lgs:rgba(0,0,0,.16)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--lg1:rgba(80,80,88,.5);--lg2:rgba(40,40,46,.28);--lgb:rgba(255,255,255,.2);--lgs:rgba(0,0,0,.45)}}
+:root[data-theme=dark]{--lg1:rgba(80,80,88,.5);--lg2:rgba(40,40,46,.28);--lgb:rgba(255,255,255,.2);--lgs:rgba(0,0,0,.45)}
+.hero h1{font-size:clamp(38px,9vw,112px)}.hero p{font-size:clamp(16px,2.2vw,19px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:18px;columns:auto}.grid .c{margin:0}.sg{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}.sg .cap{padding:10px 12px 12px;font-size:13px}
+.tabs{scrollbar-width:none;margin-inline:calc(var(--pad)*-1);padding-inline:var(--pad)}.tabs::-webkit-scrollbar{display:none}
+.rg{touch-action:pan-y}
+.pg{padding-top:130px}
+.ab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:16px 48px;align-items:start}.ab h2{margin:0}.ab p{color:var(--mu);font-size:clamp(16px,2vw,19px);max-width:62ch}
+.ct .btn{max-width:100%;overflow-wrap:anywhere}
+nav a.nb{padding:6px 0;margin-right:8px;color:var(--tx)}nav a.on{color:var(--tx);background:var(--bg2)}
+@media(hover:none){.btn{padding:12px 20px}.hero h1{animation:dr 7s ease-in-out infinite alternate}}
+@media(max-width:900px){.bgm i{animation:none;filter:blur(60px)}.ab{grid-template-columns:1fr}}
+@media(max-width:700px){:root{--pad:16px}.sg{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.pg{padding-top:100px}.sv div,.pkc,.bd{backdrop-filter:none;-webkit-backdrop-filter:none}footer{padding-bottom:90px}}
+@media(max-width:520px){nav{gap:0;padding:6px 10px 6px 14px}nav a{padding:6px 7px;font-size:12.5px}nav a.nb{margin-right:4px}.hero{padding-top:110px}}
+/* ---- chatbot: liquid glass ---- */
+#cb{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:calc(max(16px,env(safe-area-inset-bottom)) + var(--kb,0px));z-index:40;font-family:var(--g);color:var(--tx)}
+#cb *{font-family:inherit}
+.lg{position:relative;background:linear-gradient(145deg,var(--lg1),var(--lg2));-webkit-backdrop-filter:blur(24px) saturate(190%);backdrop-filter:blur(24px) saturate(190%);border:1px solid var(--lgb);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -10px 20px -12px rgba(255,255,255,.2),0 18px 50px var(--lgs)}
+.lg::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(120% 70% at 0 0,rgba(255,255,255,.34),transparent 55%)}
+.lg>*{position:relative}
+.cb-t{display:grid;place-items:center;width:56px;height:56px;padding:0;border-radius:50%;color:var(--tx);cursor:pointer;transition:transform .25s}.cb-t:hover{transform:scale(1.07)}
+.cb-n,.cb-p{position:absolute;right:0;bottom:68px}
+.cb-n{width:max-content;max-width:min(260px,calc(100vw - 96px));padding:12px 32px 12px 16px;border-radius:20px 20px 6px 20px;font-size:14px;line-height:1.4;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px) scale(.96);transition:opacity .4s,transform .5s cubic-bezier(.2,.8,.2,1),visibility .4s}
+.cb-n.on{opacity:1;visibility:visible;transform:none}
+.cb-n button{position:absolute;top:6px;right:8px;border:0;background:none;color:var(--mu);font-size:18px;line-height:1;cursor:pointer}
+.cb-p{width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 110px));height:min(560px,calc(100dvh - 110px - var(--kb,0px)));display:flex;flex-direction:column;border-radius:28px;overflow:hidden;transform-origin:100% 100%;opacity:0;visibility:hidden;transform:translateY(12px) scale(.94);transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1),visibility .25s}
+.cb-p.on{opacity:1;visibility:visible;transform:none}
+.cb-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--lgb)}.cb-h b{display:block;font-size:16px}
+.cb-h small{display:flex;align-items:center;gap:6px;color:var(--mu);font-size:12px}.cb-h small i{width:7px;height:7px;border-radius:50%;background:#34c759}
+.cb-hb{display:flex;gap:6px}.cb-x{width:32px;height:32px;border-radius:50%;border:0;background:var(--cd);color:var(--tx);cursor:pointer;font-size:18px}
+.cb-l{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.cb-m{max-width:88%;padding:10px 14px;border-radius:18px 18px 18px 6px;font-size:14.5px;line-height:1.45;background:var(--cd);border:1px solid var(--ln);overflow-wrap:anywhere;animation:cbi .3s cubic-bezier(.2,.8,.2,1)}
+.cb-m.u{align-self:flex-end;background:var(--tx);color:var(--bg);border-color:transparent;border-radius:18px 18px 6px 18px}
+.cb-m a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:2px}.cb-m ul{margin:6px 0;padding-left:18px;list-style:disc}.cb-m li{margin:3px 0}
+.cb-m.ty{display:flex;gap:4px;padding:14px}.cb-m.ty i{width:6px;height:6px;border-radius:50%;background:var(--mu);animation:cbd 1s infinite}.cb-m.ty i:nth-child(2){animation-delay:.15s}.cb-m.ty i:nth-child(3){animation-delay:.3s}
+@keyframes cbi{from{opacity:0;transform:translateY(6px)}}@keyframes cbd{50%{opacity:.25}}
+.cb-q{display:flex;gap:6px;overflow-x:auto;padding:4px 14px 10px;scrollbar-width:none}.cb-q::-webkit-scrollbar{display:none}
+.cb-q button{flex:none;font:500 13px var(--g);padding:7px 12px;border-radius:99px;border:1px solid var(--lgb);background:var(--cd);color:var(--tx);cursor:pointer;white-space:nowrap}
+.cb-f{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid var(--lgb)}
+.cb-f input{flex:1;min-width:0;font:16px var(--g);padding:10px 14px;border-radius:99px;border:1px solid var(--ln);background:var(--cd);color:var(--tx)}
+.cb-f button{flex:none;width:42px;height:42px;border-radius:50%;border:0;background:var(--tx);color:var(--bg);font-size:18px;cursor:pointer}
+@media(max-width:520px){#cb{right:12px;bottom:calc(max(12px,env(safe-area-inset-bottom)) + var(--kb,0px))}.cb-t{width:52px;height:52px}.cb-n,.cb-p{bottom:64px}.cb-p{width:calc(100vw - 24px);height:min(72vh,560px);height:min(72dvh,560px)}}
+@media(prefers-reduced-motion:reduce){.cb-m,.cb-m.ty i{animation:none!important}.cb-n,.cb-p{transition:none}}
 </style></head><body>
 <div id="app"></div><div id="adm"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -113,8 +159,8 @@ nav{overflow-x:auto;scrollbar-width:none;white-space:nowrap}nav::-webkit-scrollb
 const SB_URL="https://lrcauxpiqbhtecseczlt.supabase.co",SB_KEY="sb_publishable_LGUNrRHAKUnJcYaEN8YxkA_RFaIwFhs",ADMIN_EMAIL="sifatarafat60@gmail.com"; // <- nijer email dao (setup.sql-er email-er sathe same)
 /* ================== */
 const sb=supabase.createClient(SB_URL,SB_KEY),$=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';');
-let S={br:"Vexel",bd:"Taking new projects",ft:"Vexel Studio",ig:"",yt:"",fb:"",be:"",sv:[{h:"Video Editing",p:"Reels, vlogs, ads and long-form with retention-first pacing, sound and colour."},{h:"Thumbnails",p:"Click-worthy designs built to lift your CTR."},{h:"Retouch & Grade",p:"Colour correction, cleanup and finishing that elevates raw footage."}],h:"Edits that",h2:"hold attention.",sub:"Vexel Studio crafts scroll-stopping thumbnails and cinematic video edits for creators and brands.",email:"hello@vexel.studio",wa:"",pt:"Choose your",pt2:"package",ps:"Clear pricing, fast delivery. Pick a package and place your order in a minute.",ob:"Order now",pk:[{n:"Thumbnail Pack",pr:"$25",u:"/ 3 thumbnails",d:"Click-worthy thumbnails designed to lift your CTR.",f:"3 custom thumbnails\n2 revisions each\n48-hour delivery\nSource file on request",h:false,l:""},{n:"Short-form Edit",pr:"$60",u:"/ 5 shorts",d:"Retention-first Reels, Shorts and TikToks.",f:"5 vertical edits up to 60s\nCaptions and sound design\n2 revisions each\n3–4 day delivery",h:true,l:""},{n:"Full Channel",pr:"$199",u:"/ month",d:"A done-for-you editing pipeline for your channel.",f:"4 long-form edits\nThumbnail for every video\nColour grade and sound mix\nPriority support",h:false,l:""}]},I=[],F='all',user=null,adm=0,msg='';
-const L={all:'All',v:'Videos',th:'Thumbnails',ba:'Before / After'},touch=matchMedia('(hover:none)').matches,isA=()=>user&&user.email&&user.email.toLowerCase()==ADMIN_EMAIL.toLowerCase();
+let S={br:"Vexel",bd:"Taking new projects",ft:"Vexel Studio",ig:"",yt:"",fb:"",be:"",sv:[{h:"Video Editing",p:"Reels, vlogs, ads and long-form with retention-first pacing, sound and colour."},{h:"Thumbnails",p:"Click-worthy designs built to lift your CTR."},{h:"Retouch & Grade",p:"Colour correction, cleanup and finishing that elevates raw footage."}],h:"Edits that",h2:"hold attention.",sub:"Vexel Studio crafts scroll-stopping thumbnails and cinematic video edits for creators and brands.",email:"hello@vexel.studio",wa:"",pt:"Choose your",pt2:"package",ps:"Clear pricing, fast delivery. Pick a package and place your order in a minute.",ob:"Order now",abt:"About us",ab:"Vexel Studio is a creative studio for video editing and thumbnail design. We craft scroll-stopping thumbnails and cinematic video edits for creators and brands, with retention-first pacing, sound and colour.",cm:"",cw:"",cd:"",cg:"",cbo:"",pk:[{n:"Thumbnail Pack",pr:"$25",u:"/ 3 thumbnails",d:"Click-worthy thumbnails designed to lift your CTR.",f:"3 custom thumbnails\n2 revisions each\n48-hour delivery\nSource file on request",h:false,l:""},{n:"Short-form Edit",pr:"$60",u:"/ 5 shorts",d:"Retention-first Reels, Shorts and TikToks.",f:"5 vertical edits up to 60s\nCaptions and sound design\n2 revisions each\n3–4 day delivery",h:true,l:""},{n:"Full Channel",pr:"$199",u:"/ month",d:"A done-for-you editing pipeline for your channel.",f:"4 long-form edits\nThumbnail for every video\nColour grade and sound mix\nPriority support",h:false,l:""}]},I=[],F='all',user=null,adm=0,msg='';
+const L={all:'All',v:'Videos',th:'Thumbnails',ba:'Before / After',s:'Quick Shorts'},touch=matchMedia('(hover:none)').matches,isA=()=>user&&user.email&&user.email.toLowerCase()==ADMIN_EMAIL.toLowerCase();
 const gr=n=>`linear-gradient(135deg,hsl(0 0% ${62-n*5}%),hsl(0 0% ${82-n*4}%))`;
 const yt=u=>(String(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/)||[])[1],dr=u=>(String(u||'').match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=|thumbnail\?id=)([\w-]+)/)||[])[1];
 const ytSrc=(y,hover)=>`https://www.youtube.com/embed/${y}?autoplay=1&playsinline=1&rel=0&modestbranding=1${hover?`&mute=1&controls=0&loop=1&playlist=${y}`:''}`,drSrc=d=>`https://drive.google.com/file/d/${d}/preview`;
@@ -129,7 +175,8 @@ function lb(c){const i=I.find(x=>x.id==c.dataset.id);if(!i)return;const o=docume
  const cl=()=>{o.classList.remove('on');setTimeout(()=>o.remove(),250);document.removeEventListener('keydown',k)},k=e=>e.key=='Escape'&&cl();
  x.onclick=cl;o.onclick=e=>{if(e.target==o)cl()};document.addEventListener('keydown',k);
  b.append(m,x);const t=document.createElement('div');t.className='lbt';t.textContent=i.title+(i.tag?' · '+i.tag:'');b.append(t);o.append(b);document.body.append(o);requestAnimationFrame(()=>o.classList.add('on'))}
-function reveal(){const o=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}}),{threshold:.12});document.querySelectorAll('.c,.sv>div,.pkc,#app h2,.bd').forEach((e,n)=>{e.classList.add('rv');e.style.animationDelay=(n%4)*70+'ms';o.observe(e)})}
+const ao=touch?new IntersectionObserver(e=>e.forEach(x=>x.target.classList.toggle('act',x.isIntersecting)),{threshold:.7}):null,po=touch?new IntersectionObserver(e=>e.forEach(x=>{const f=x.target._h;f&&(x.isIntersecting?f[0]():f[1]())}),{threshold:.6}):null,ro=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');ro.unobserve(x.target)}}),{threshold:.12});
+function reveal(){ro.disconnect();document.querySelectorAll('.c,.sv>div,.pkc,#app h2,.bd').forEach((e,n)=>{e.classList.add('rv');e.style.animationDelay=(n%4)*70+'ms';ro.observe(e)})}
 function card(i,n){let m;
  if(i.t=='v'||i.t=='s'){const y=yt(i.a),d=dr(i.a);m=`<div class="m${i.t=='s'?' s':''}" ${y?`data-yt="${y}"`:d?`data-dr="${d}"`:''} style="background:${gr(n)}">${y?`<img loading="lazy" src="https://img.youtube.com/vi/${y}/hqdefault.jpg" alt="">`:d?`<img loading="lazy" src="https://drive.google.com/thumbnail?id=${d}&sz=w800" alt="">`:i.a?`<video muted loop playsinline preload="metadata" src="${E(i.a)}#t=0.1"></video>`:`<div class="ph">▶</div>`}</div>`}
  else if(i.t=='th')m=`<div class="m" style="background:${gr(n)}">${i.a?`<img loading="lazy" src="${E(i.a)}" alt="${E(i.title)}">`:`<div class="ph">Aa</div>`}</div>`;
@@ -137,22 +184,28 @@ function card(i,n){let m;
  return `<article class="c gl" data-id="${i.id}">${m}<div class="cap"><b class="g">${E(i.title)}</b><span>${E(i.tag)}</span></div></article>`}
 const CO=[['g1','Heading gradient: highlight color','#ffffff'],['g2','Heading gradient: fade color','#8e8e93'],['gc','Card border glow color','#ffffff']];
 function th(){const r=document.documentElement.style;[['g1','--h1'],['g2','--h2'],['gc','--gc']].forEach(([k,v])=>S[k]?r.setProperty(v,S[k]):r.removeProperty(v))}
-function render(){th();document.title=S.ft||S.br||document.title;const it=I.filter(x=>x.t!='s'&&(F=='all'||x.t==F)),sh=I.filter(x=>x.t=='s'),shS=!sh.length?'':`<section id="shorts"><h2>Quick <em>shorts</em></h2><div class="sr">${sh.length?sh.map((x,n)=>card(x,n)).join(''):[0,1,2,3].map(n=>`<article class="c"><div class="m s" style="background:${gr(n)}"><div class="ph">▶</div></div><div class="cap"><b class="g">Coming soon</b></div></article>`).join('')}</div></section>`;
-const pk=S.pk||[],ol=p=>{const l=String(p.l||'').trim();if(/^(https?:|mailto:|tel:)/i.test(l))return l;const w=String(S.wa||'').replace(/\D/g,''),t="Hi! I'd like to order the "+p.n+" package.";return w?'https://wa.me/'+w+'?text='+encodeURIComponent(t):'mailto:'+S.email+'?subject='+encodeURIComponent('Order: '+p.n)+'&body='+encodeURIComponent(t)},
-pkS=pk.length?`<section id="packages"><h2>${E(S.pt)} <em>${E(S.pt2)}</em></h2>${S.ps?`<p class="sub">${E(S.ps)}</p>`:''}<div class="pk">${pk.map(p=>{const h=ol(p);return `<article class="pkc gl${p.h?' hot':''}">${p.h?'<span class="pop">Most popular</span>':''}<h3>${E(p.n)}</h3><div class="pr"><b class="g">${E(p.pr)}</b><span>${E(p.u)}</span></div>${p.d?`<p>${E(p.d)}</p>`:''}<ul>${String(p.f||'').split('\n').map(x=>x.trim()).filter(Boolean).map(x=>`<li>${E(x)}</li>`).join('')}</ul><a class="btn" href="${E(h)}"${/^https?:/i.test(h)?' target="_blank" rel="noopener"':''}>${E(S.ob||'Order now')}</a></article>`}).join('')}</div></section>`:'';
-$('#app').innerHTML=`<nav><b>${E(S.br)}</b><a href="#work">Work</a>${sh.length?'<a href="#shorts">Shorts</a>':''}<a href="#services">Services</a>${pk.length?'<a href="#packages">Packages</a>':''}<a href="#contact">Contact</a></nav>
-<section class="hero">${S.bd?`<div class="bd"><i></i>${E(S.bd)}</div>`:''}<h1>${E(S.h)}<br><em>${E(S.h2)}</em></h1><p>${E(S.sub)}</p><a class="btn" href="#work">View work</a> <a class="btn o" href="#contact">Get in touch</a></section>
-<section id="work"><h2>Selected <em>work</em></h2><div class="tabs">${Object.entries(L).map(([k,v])=>`<button class="btn ${F==k?'':'o'}" data-f="${k}">${v}</button>`).join('')}</div><div class="grid">${it.map((x,n)=>card(x,n)).join('')||'<p>Nothing here yet.</p>'}</div></section>${shS}
+let GL=[],HH=[],V='';
+function render(){th();document.title=S.ft||S.br||document.title;ao&&ao.disconnect();po&&po.disconnect();
+const sh=I.filter(x=>x.t=='s');if(F=='s'&&!sh.length)F='all';const it=F=='s'?sh:I.filter(x=>x.t!='s'&&(F=='all'||x.t==F)),pk=S.pk||[],ti=t=>{const w=String(t||'').trim().split(' '),l=w.pop();return `${E(w.join(' '))} <em>${E(l)}</em>`},
+ol=p=>{const l=String(p.l||'').trim();if(/^(https?:|mailto:|tel:)/i.test(l))return l;const w=String(S.wa||'').replace(/\D/g,''),t="Hi! I'd like to order the "+p.n+" package.";return w?'https://wa.me/'+w+'?text='+encodeURIComponent(t):'mailto:'+S.email+'?subject='+encodeURIComponent('Order: '+p.n)+'&body='+encodeURIComponent(t)},
+pkS=`<section id="packages" class="pg"><h2>${E(S.pt)} <em>${E(S.pt2)}</em></h2>${S.ps?`<p class="sub">${E(S.ps)}</p>`:''}<div class="pk">${pk.map(p=>{const h=ol(p);return `<article class="pkc gl${p.h?' hot':''}">${p.h?'<span class="pop">Most popular</span>':''}<h3>${E(p.n)}</h3><div class="pr"><b class="g">${E(p.pr)}</b><span>${E(p.u)}</span></div>${p.d?`<p>${E(p.d)}</p>`:''}<ul>${String(p.f||'').split('\n').map(x=>x.trim()).filter(Boolean).map(x=>`<li>${E(x)}</li>`).join('')}</ul><a class="btn" href="${E(h)}"${/^https?:/i.test(h)?' target="_blank" rel="noopener"':''}>${E(S.ob||'Order now')}</a></article>`}).join('')}</div></section>`,
+nav=`<nav><a class="nb" href="#/"><b>${E(S.br)}</b></a><a href="#services">Services</a><a href="#about">About</a><a href="#/work"${V=='work'?' class="on"':''}>Work</a>${pk.length?`<a href="#/pricing"${V=='pricing'?' class="on"':''}>Pricing</a>`:''}<a href="#contact">Contact</a></nav>`,
+home=`<section class="hero">${S.bd?`<div class="bd"><i></i>${E(S.bd)}</div>`:''}<h1>${E(S.h)}<br><em>${E(S.h2)}</em></h1><p>${E(S.sub)}</p><a class="btn" href="#contact">Get in touch</a> <a class="btn o" href="#/work">View work</a></section>
 <section id="services"><h2>What we <em>do</em></h2><div class="sv">${(S.sv||[]).map(v=>`<div class="gl"><h3>${E(v.h)}</h3><p>${E(v.p)}</p></div>`).join('')}</div></section>
-${pkS}<section id="contact" class="ct"><h2>Let’s make something <em>great.</em></h2><a class="btn" href="mailto:${E(S.email)}">${E(S.email)}</a>${S.wa?` <a class="btn o" href="https://wa.me/${E(String(S.wa).replace(/\D/g,''))}">WhatsApp</a>`:''}<div class="so">${[['ig','Instagram'],['yt','YouTube'],['fb','Facebook'],['be','Behance']].filter(([k])=>S[k]).map(([k,l])=>`<a class="btn o" target="_blank" rel="noopener" href="${E(S[k])}">${l}</a>`).join('')}</div></section><footer>© ${E(S.ft)} · <a id="ao">Admin</a></footer>`;
+<section id="about"><div class="ab"><h2>${ti(S.abt)}</h2><p>${E(S.ab).replace(/\n/g,'<br>')}</p></div></section>
+<section id="contact" class="ct"><h2>Let’s make something <em>great.</em></h2><a class="btn" href="mailto:${E(S.email)}">${E(S.email)}</a>${S.wa?` <a class="btn o" href="https://wa.me/${E(String(S.wa).replace(/\D/g,''))}">WhatsApp</a>`:''}<div class="so">${[['ig','Instagram'],['yt','YouTube'],['fb','Facebook'],['be','Behance']].filter(([k])=>/^https?:/i.test(S[k]||'')).map(([k,l])=>`<a class="btn o" target="_blank" rel="noopener" href="${E(S[k])}">${l}</a>`).join('')}</div></section>`,
+work=`<section id="work" class="pg"><h2>Selected <em>work</em></h2><div class="tabs">${Object.entries(L).filter(([k])=>k!='s'||sh.length).map(([k,v])=>`<button class="btn ${F==k?'':'o'}" data-f="${k}">${v}</button>`).join('')}</div><div class="grid${F=='s'?' sg':''}">${it.map((x,n)=>card(x,n)).join('')||'<p>Nothing here yet.</p>'}</div></section>`;
+$('#app').innerHTML=nav+(V=='work'?work:V=='pricing'&&pk.length?pkS:home)+`<footer>© ${E(S.ft)} · <a id="ao">Admin</a></footer>`;
 document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{F=b.dataset.f;render()});
 $('#ao').onclick=()=>{adm=1;ar()};
-const ao=touch?new IntersectionObserver(e=>e.forEach(x=>x.target.classList.toggle('act',x.isIntersecting)),{threshold:.7}):null;
 document.querySelectorAll('.c').forEach(c=>{const m=c.querySelector('.m'),v=c.querySelector('video'),r=c.querySelector('.rg'),Y=m.dataset.yt,D=m.dataset.dr;let p,q;
  if(v){p=()=>v.play().catch(()=>{});q=()=>{v.pause();v.currentTime=.1}}
  else if(Y||D){p=()=>{if(!m.querySelector('iframe'))m.appendChild(ifr(Y?ytSrc(Y,1):drSrc(D),1,!Y))};q=()=>{const f=m.querySelector('iframe');f&&f.remove()}}
- if(p){c.onmouseenter=p;c.onmouseleave=q;if(touch)new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting?p():q()),{threshold:.6}).observe(c)}
- if(r){r.oninput=()=>m.style.setProperty('--p',r.value+'%');c.querySelector('.zm').onclick=()=>lb(c)}else{c.style.cursor='zoom-in';c.onclick=()=>lb(c)}});document.querySelectorAll('.gl').forEach(e=>ao&&ao.observe(e));reveal()}
+ if(p){c.onmouseenter=p;c.onmouseleave=q;if(po){c._h=[p,q];po.observe(c)}}
+ if(r){r.oninput=()=>m.style.setProperty('--p',r.value+'%');c.querySelector('.zm').onclick=()=>lb(c)}else{c.style.cursor='zoom-in';c.onclick=()=>lb(c)}});
+GL=document.querySelectorAll('.gl');HH=document.querySelectorAll('h1,h2');if(ao)GL.forEach(e=>ao.observe(e));reveal();bsync();const at=document.querySelector('.tabs .btn:not(.o)');at&&at.scrollIntoView({inline:'center',block:'nearest',behavior:'instant'})}
+function route(){const h=location.hash.slice(1),v=/^\/?(work|shorts)$/.test(h)?'work':/^\/?(pricing|packages)$/.test(h)?'pricing':'home',a=v=='home'&&h&&h[0]!='/'?h:'',ch=v!=V;V=v;if(ch)render();
+ const t=a&&document.getElementById(a),b=ch?'instant':'smooth';t?t.scrollIntoView({behavior:b}):scrollTo({top:0,behavior:b})}
 async function load(){try{const a=await sb.from('items').select('*').order('pos'),b=await sb.from('settings').select('data').eq('id',1).maybeSingle();if(a.data)I=a.data;if(b.data&&b.data.data)S={...S,...b.data.data}}catch(e){}render();if(adm)ar()}
 let tab='items',op=-1;
 const up=async f=>{if(!f)return'';const p=Date.now()+'-'+Math.random().toString(36).slice(2,7)+'-'+f.name.replace(/[^\w.]/g,'_'),r=await sb.storage.from('media').upload(p,f);if(r.error)throw r.error;return sb.storage.from('media').getPublicUrl(p).data.publicUrl};
@@ -167,7 +220,7 @@ else{const P={
  add:()=>`<select id="nt">${TY('v')}</select><input id="nti" placeholder="Title"><input id="ntg" placeholder="Tag (e.g. YouTube)"><small>Main file (video / thumbnail / AFTER / short)</small><input id="nf" type="file" accept="video/*,image/*"><input id="nu" placeholder="…or paste YouTube / Drive / file URL"><small>BEFORE image (only Before / After)</small><input id="nb" type="file" accept="image/*"><button class="btn" id="add" style="margin-top:8px">Add</button>`,
  sv:()=>(S.sv||[]).map((v,i)=>`<div class="ex"><input data-sh="${i}" value="${E(v.h)}" placeholder="Service title"><input data-sp="${i}" value="${E(v.p)}" placeholder="Description"><button class="btn o" data-sd="${i}" style="margin-top:6px">Delete</button></div>`).join('')+`<button class="btn" id="sa" style="margin-top:8px">+ Add service</button>`,
  pk:()=>[['pt','Section title'],['pt2','Section title (italic word)'],['ps','Subtext (empty = hide)'],['ob','Order button text']].map(([k,l])=>`<small>${l}</small><input data-s="${k}" value="${E(S[k])}">`).join('')+(S.pk||[]).map((p,n)=>`<div class="ex"><div class="hd"><b class="g">Package ${n+1}</b><span><button class="btn o" data-pm="${n}:-1">↑</button> <button class="btn o" data-pm="${n}:1">↓</button> <button class="btn o" data-pd="${n}">✕</button></span></div><small>Name</small><input data-pk="n:${n}" value="${E(p.n)}"><small>Price (e.g. $49 or ৳2,500)</small><input data-pk="pr:${n}" value="${E(p.pr)}"><small>Price note (e.g. / video)</small><input data-pk="u:${n}" value="${E(p.u)}"><small>Short description</small><input data-pk="d:${n}" value="${E(p.d)}"><small>Features (one per line)</small><textarea data-pk="f:${n}">${E(p.f)}</textarea><small>Custom order link (optional, empty = WhatsApp / email)</small><input data-pk="l:${n}" value="${E(p.l)}"><label style="display:flex;gap:8px;align-items:center;margin-top:10px"><input type="checkbox" data-pk="h:${n}"${p.h?' checked':''}><small style="margin:0">Mark as Most popular</small></label></div>`).join('')+`<button class="btn" id="pa" style="margin-top:8px">+ Add package</button>`,
- site:()=>[['br','Brand name'],['bd','Badge text (empty = hide)'],['h','Headline'],['h2','Italic headline'],['sub','Subtext'],['email','Email'],['wa','WhatsApp number (no +)'],['ig','Instagram link'],['yt','YouTube link'],['fb','Facebook link'],['be','Behance link'],['ft','Footer name']].map(([k,l])=>`<small>${l}</small><input data-s="${k}" value="${E(S[k])}">`).join('')+'<h3>Colors</h3>'+CO.map(([k,l,d])=>`<small>${l}</small><div class="r"><input type="color" data-s="${k}" value="${E(S[k]||d)}"><button class="btn o" data-rc="${k}">Reset</button></div>`).join('')+'<small>Reset dile theme er default color fire ashbe.</small>'};
+ site:()=>[['br','Brand name'],['bd','Badge text (empty = hide)'],['h','Headline'],['h2','Italic headline'],['sub','Subtext'],['email','Email'],['wa','WhatsApp number (no +)'],['ig','Instagram link'],['yt','YouTube link'],['fb','Facebook link'],['be','Behance link'],['ft','Footer name'],['abt','About title'],['ab','About text'],['cbo','Chatbot'],['cm','Chatbot welcome bubble text (empty = default)'],['cw','Chatbot: workflow answer (empty = asks visitors to contact you)'],['cd','Chatbot: delivery time answer (empty = uses package info)'],['cg','Chatbot: extra info for general questions (optional)']].map(([k,l])=>`<small>${l}</small>${k=='cbo'?`<select data-s="cbo"><option value="">On</option><option value="off"${S.cbo=='off'?' selected':''}>Off (hidden)</option></select>`:`<input data-s="${k}" value="${E(S[k])}">`}`).join('')+'<h3>Colors</h3>'+CO.map(([k,l,d])=>`<small>${l}</small><div class="r"><input type="color" data-s="${k}" value="${E(S[k]||d)}"><button class="btn o" data-rc="${k}">Reset</button></div>`).join('')+'<small>Reset dile theme er default color fire ashbe.</small>'};
  h=`<div class="tb">${[['items','Items'],['add','Add'],['sv','Services'],['pk','Packages'],['site','Site']].map(([k,v])=>`<button class="btn ${tab==k?'':'o'}" data-t="${k}">${v}</button>`).join('')}</div><small>${E(user.email)}</small> <button class="btn o" id="so" style="padding:3px 12px">Sign out</button> <small id="ms">${E(msg)}</small>${P[tab]()}<p><small>Sob change sathe sathe live hoy.</small></p>`}
 a.innerHTML=`<div class="sh"><div class="sb"><div class="hd"><h3 class="g" style="margin:0">Admin panel</h3><button class="btn o" id="x">Close</button></div>${h}</div></div>`;
 $('#x').onclick=()=>{adm=0;ar()};a.firstChild.onclick=e=>{if(e.target===a.firstChild){adm=0;ar()}};const g=id=>$(id),Q=k=>a.querySelectorAll(k);
@@ -201,12 +254,53 @@ sb.auth.getSession().then(r=>{user=r.data.session?r.data.session.user:null});
 if(matchMedia('(hover:hover) and (pointer:fine)').matches){
  const R=110,rs=x=>{x.style.removeProperty('--x');x.style.removeProperty('--y')};let px=0,py=0,pt=null,ra=0;
  const tick=()=>{ra=0;const h=pt&&pt.closest?pt.closest('h1,h2'):null;
-  document.querySelectorAll('h1,h2').forEach(x=>{if(x===h){const b=x.getBoundingClientRect();x.style.setProperty('--x',px-b.left+'px');x.style.setProperty('--y',py-b.top+'px')}else rs(x)});
-  document.querySelectorAll('.gl').forEach(c=>{const b=c.getBoundingClientRect(),dx=Math.max(b.left-px,0,px-b.right),dy=Math.max(b.top-py,0,py-b.bottom),d=Math.hypot(dx,dy),o=d<R?1-d/R:0;
+  HH.forEach(x=>{if(x===h){const b=x.getBoundingClientRect();x.style.setProperty('--x',px-b.left+'px');x.style.setProperty('--y',py-b.top+'px')}else rs(x)});
+  GL.forEach(c=>{const b=c.getBoundingClientRect(),dx=Math.max(b.left-px,0,px-b.right),dy=Math.max(b.top-py,0,py-b.bottom),d=Math.hypot(dx,dy),o=d<R?1-d/R:0;
    if(o===0&&c._o===0)return;c._o=o;c.style.setProperty('--cx',px-b.left+'px');c.style.setProperty('--cy',py-b.top+'px');c.style.setProperty('--o',o.toFixed(2))})};
  addEventListener('pointermove',e=>{px=e.clientX;py=e.clientY;pt=e.target;if(!ra)ra=requestAnimationFrame(tick)},{passive:true});
  document.documentElement.addEventListener('pointerleave',()=>{pt=null;px=py=-9999;if(!ra)ra=requestAnimationFrame(tick)})}
 addEventListener('keydown',e=>{if(e.key=='Escape'&&adm&&!document.querySelector('.lb')){adm=0;ar()}});
+/* ===== CHATBOT (rule-based, answers only from site data) ===== */
+const cb=document.createElement('div');cb.id='cb';
+cb.innerHTML='<div class="cb-n lg" role="status"><span></span><button type="button" aria-label="Dismiss">×</button></div><div class="cb-p lg" role="dialog" aria-label="Chat assistant"><div class="cb-h"><div><b class="g"></b><small><i></i>Online</small></div><span class="cb-hb"><button type="button" class="cb-x cb-s" aria-label="Sound on" title="Sound on"></button><button type="button" class="cb-x cb-c" aria-label="Minimize chat">–</button></span></div><div class="cb-l" role="log" aria-live="polite"></div><div class="cb-q"></div><form class="cb-f"><input name="q" placeholder="Ask a question…" aria-label="Your question" maxlength="200" autocomplete="off"><button aria-label="Send">↑</button></form></div><button type="button" class="cb-t lg" aria-label="Open chat" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.5-4.6A8 8 0 1 1 21 12z"/></svg></button>';
+const $c=k=>cb.querySelector(k),CP=$c('.cb-p'),CL=$c('.cb-l'),CN=$c('.cb-n'),CT=$c('.cb-t'),CF=$c('.cb-f');
+let bo=0,bi=0,nd=0,pn=0,AC=null,mu=0;try{mu=localStorage.cbm=='1'}catch(e){}
+const SND={nudge:[[880,0,.18],[1318,.13,.3]],send:[[620,0,.09]],recv:[[784,0,.1],[1046,.09,.18]]},
+play=k=>{const t=AC.currentTime;SND[k].forEach(([f,s,d])=>{const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.setValueAtTime(0,t+s);g.gain.linearRampToValueAtTime(.07,t+s+.01);g.gain.exponentialRampToValueAtTime(.0001,t+s+d);o.connect(g);g.connect(AC.destination);o.start(t+s);o.stop(t+s+d+.02)})},
+tone=k=>{if(mu)return 1;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state=='running'){play(k);return 1}if(navigator.userActivation&&!navigator.userActivation.hasBeenActive)return 0;AC.resume().then(()=>play(k)).catch(()=>{});return 1}catch(e){return 1}},
+unlock=()=>{if(pn&&CN.classList.contains('on')){pn=0;tone('nudge')}};
+['pointerup','keydown'].forEach(v=>addEventListener(v,unlock,{once:true,passive:true}));
+const H=x=>E(x).replace(/\n/g,'<br>'),mail=()=>`<a href="mailto:${E(S.email)}">${E(S.email)}</a>`,
+wal=()=>{const w=String(S.wa||'').replace(/\D/g,'');return w?`<a href="https://wa.me/${w}" target="_blank" rel="noopener">WhatsApp</a>`:''},
+reach=()=>[mail(),wal()].filter(Boolean).join(' or '),
+soc=()=>{const a=[['ig','Instagram'],['yt','YouTube'],['fb','Facebook'],['be','Behance']].filter(([k])=>/^https?:/i.test(S[k]||''));return a.length?' You can also find us on '+a.map(([k,l])=>`<a href="${E(S[k])}" target="_blank" rel="noopener">${l}</a>`).join(', ')+'.':''},
+NF=()=>`I don't have that information yet, but the team can help you directly: ${reach()}.`,
+TP={
+sv:['Services',()=>{const a=S.sv||[];return a.length?'Here is what we offer:<ul>'+a.map(v=>`<li><b>${E(v.h)}</b> – ${E(v.p)}</li>`).join('')+'</ul>':NF()}],
+pr:['Pricing',()=>{const a=S.pk||[];return a.length?'Our packages:<ul>'+a.map(p=>`<li><b>${E(p.n)}</b> – ${E(p.pr)} ${E(p.u)}</li>`).join('')+`</ul>Full details are on the <a href="#/pricing">Pricing page</a>. For anything not listed, please contact us: ${reach()}.`:`Pricing isn't listed yet. Please contact us for details: ${reach()}.`}],
+pf:['Projects',()=>{const c=t=>I.filter(x=>x.t==t).length,n=[['Videos',c('v')],['Thumbnails',c('th')],['Before / After',c('ba')],['Shorts',c('s')]].filter(x=>x[1]);return n.length?`Our portfolio includes ${n.map(x=>x[0]+' ('+x[1]+')').join(', ')}. Browse it on the <a href="#/work">Work page</a>.`:`Our portfolio is being updated. Please contact us to learn more: ${reach()}.`}],
+wf:['Workflow',()=>S.cw?H(S.cw):`The exact workflow depends on your project. Send us your brief and we'll guide you through the next steps: ${reach()}.`],
+dl:['Delivery time',()=>{if(S.cd)return H(S.cd);const a=(S.pk||[]).map(p=>[p.n,String(p.f||'').split('\n').find(l=>/deliver|turnaround/i.test(l))]).filter(x=>x[1]);return a.length?'Delivery by package:<ul>'+a.map(x=>`<li><b>${E(x[0])}</b> – ${E(x[1].trim())}</li>`).join('')+`</ul>For other projects, please ask us: ${reach()}.`:`Delivery time depends on the project. Please contact us for an estimate: ${reach()}.`}],
+ct:['Contact / Hiring',()=>`To hire us or place an order, reach out at ${reach()}.`+soc()],
+gn:['General',()=>`${E(S.sub)}${S.cg?' '+H(S.cg):''}<br>Ask me about our services, pricing, work, workflow, delivery time or how to contact us.`]},
+RX=[['wf',/workflow|process|revision|how (does|do|will).*(work|go)|steps|brief/i],['dl',/deliver|turnaround|how long|deadline|duration|\bdays?\b|\bhours?\b|urgent|fast|কত দিন|কবে/i],['pr',/pric|cost|rate|how much|package|plan|budget|quote|charge|\bdaa?m\b|taka|দাম|টাকা|খরচ/i],['ct',/contact|hire|hiring|email|mail|whatsapp|reach|book|order|available|call|number|যোগাযোগ/i],['pf',/portfolio|project|sample|example|previous|past work|showreel|reel|short|\bwork\b|কাজ/i],['sv',/service|offer|edit|video|thumbnail|retouch|grade|colou?r|what (do|can) you|সার্ভিস/i],['gn',/who|about|agency|studio|company/i]],
+reply=(q,k)=>{if(!k){if(/^\s*(hi|hello|hey|salam|assalamu|হ্যালো|হাই)\b/i.test(q)&&q.length<20)return'Hi! How can I help? Pick a topic below or type your question.';if(/thank|ধন্যবাদ/i.test(q))return"You're welcome! Anything else I can help with?";const m=RX.find(r=>r[1].test(q));k=m&&m[0]}return k?TP[k][1]():NF()},
+add=(h,u)=>{const d=document.createElement('div');d.className='cb-m'+(u?' u':'');u?d.textContent=h:d.innerHTML=h;CL.append(d);CL.scrollTop=CL.scrollHeight;return d},
+ask=(q,k)=>{q=q.trim();if(!q)return;add(q,1);tone('send');const d=add('<i></i><i></i><i></i>');d.classList.add('ty');setTimeout(()=>{d.classList.remove('ty');d.innerHTML=reply(q,k);CL.scrollTop=CL.scrollHeight;tone('recv')},350)},
+bopen=v=>{bo=v;pn=0;CP.classList.toggle('on',!!v);CT.setAttribute('aria-expanded',!!v);CT.setAttribute('aria-label',v?'Close chat':'Open chat');CN.classList.remove('on');
+ if(v){$c('.cb-h b').textContent=(S.br||'Studio')+' Assistant';if(!bi){bi=1;add(`Hi! I'm the ${E(S.br||'studio')} assistant. Pick a topic below or type your question.`)}if(!touch)CF.q.focus()}},
+nudge=()=>{if(bo||S.cbo=='off')return;try{if(sessionStorage.cbn)return;sessionStorage.cbn='1'}catch(e){}CN.firstChild.textContent=S.cm||`Hi 👋 Questions about ${S.br||'our studio'}? Ask me about services, pricing or delivery.`;CN.classList.add('on');tone('nudge')||(pn=1);setTimeout(()=>CN.classList.remove('on'),11000)};
+function bsync(){cb.style.display=S.cbo=='off'?'none':'';if(!nd){nd=1;setTimeout(nudge,1200)}}
+$c('.cb-q').innerHTML=Object.entries(TP).map(([k,v])=>`<button type="button" data-k="${k}">${v[0]}</button>`).join('');
+$c('.cb-q').onclick=e=>{const b=e.target.closest('[data-k]');b&&ask(TP[b.dataset.k][0],b.dataset.k)};
+CF.onsubmit=e=>{e.preventDefault();const v=CF.q.value;CF.q.value='';ask(v)};
+const SB=$c('.cb-s'),ss=()=>{SB.textContent=mu?'🔕':'🔔';const l=mu?'Sound off':'Sound on';SB.title=l;SB.setAttribute('aria-label',l)};ss();
+SB.onclick=()=>{mu=!mu;try{localStorage.cbm=mu?'1':'0'}catch(e){}ss();tone('recv')};
+CT.onclick=()=>bopen(!bo);$c('.cb-c').onclick=()=>bopen(0);CN.onclick=e=>{e.target.closest('button')?CN.classList.remove('on'):bopen(1)};
+CL.onclick=e=>{const a=e.target.closest('a');a&&String(a.getAttribute('href')).startsWith('#')&&bopen(0)};
+addEventListener('keydown',e=>{e.key=='Escape'&&bo&&bopen(0)});
+if(window.visualViewport){const f=()=>cb.style.setProperty('--kb',Math.max(0,innerHeight-visualViewport.height-visualViewport.offsetTop)+'px');visualViewport.addEventListener('resize',f);visualViewport.addEventListener('scroll',f)}
+document.body.append(cb);setTimeout(()=>{nd||(nd=1,nudge())},4000);
 document.body.insertAdjacentHTML('afterbegin','<div class="bgm"><i></i><i></i><i></i></div>');
-render();load();
+addEventListener('hashchange',route);route();load();
 </script></body></html>
